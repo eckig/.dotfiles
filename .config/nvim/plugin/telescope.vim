@@ -3,9 +3,6 @@
 nnoremap <leader>ff <cmd>Telescope git_files<cr>
 nnoremap <leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fc <cmd>Telescope git_commits<cr>
-nnoremap <leader>fb <cmd>Telescope git_branches<cr>
-nnoremap <leader>fs <cmd>Telescope git_status<cr>
 
 lua << END
 local previewers = require("telescope.previewers")
@@ -25,11 +22,11 @@ local new_maker = function(filepath, bufnr, opts)
 end
 
 require("telescope").setup({
-	defaults = {
-		file_sorter = require("telescope.sorters").get_fzy_sorter,
-		color_devicons = true,
+        defaults = {
+                file_sorter = require("telescope.sorters").get_fzy_sorter,
+                color_devicons = true,
                 buffer_previewer_maker = new_maker,
-	},
+        },
 })
 
 require("telescope").load_extension("fzy_native")
