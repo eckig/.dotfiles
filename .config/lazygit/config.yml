@@ -1,0 +1,12 @@
+gui:
+  language: 'en'
+  timeFormat: '2006/01/02 15:04'
+  showIcons: true
+  showFileTree: false
+  showListFooter: false
+  showRandomTip: false
+os:
+  editCommand: nvim
+  editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
+git:
+  diffContextSize: 3
