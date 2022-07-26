@@ -25,14 +25,13 @@ set smartcase
 
 set cursorline             " Find the current line quickly.
 set wrapscan               " Searches wrap around end-of-file.
+set nowrap
 
 set laststatus=3           " global status line
 
-set number
 set list                   " Show trailing spaces, tabs and non breakable spaces
 set listchars=trail:~,tab:>-,nbsp:␣
 
-set completeopt=menu,menuone,noselect
 set clipboard+=unnamedplus " system clipboard
 
 " Put all temporary files under the same directory.
@@ -46,6 +45,7 @@ set undofile
 set undodir     =$HOME/.vim/files/undo/
 set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
+" plugins
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -59,9 +59,19 @@ call plug#end()
 
 let mapleader = " "
 
+" theme (plugin needed)
 set background=dark
 colorscheme gruvbox
 
+" line numbers
+set number
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
+
+" buffer switch
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
