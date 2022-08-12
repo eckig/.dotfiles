@@ -2,7 +2,7 @@ gui:
   language: 'en'
   timeFormat: '2006/01/02 15:04'
   showIcons: true
-  showFileTree: false
+  showFileTree: true
   showListFooter: false
   showRandomTip: false
 os:

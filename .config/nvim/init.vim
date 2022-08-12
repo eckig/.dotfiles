@@ -55,6 +55,7 @@ Plug 'folke/which-key.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
+Plug 'lewis6991/spaceless.nvim'
 call plug#end()
 
 let mapleader = " "
