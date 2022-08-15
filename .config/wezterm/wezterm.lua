@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm'
 return {
   font = wezterm.font 'JetBrains Mono',
+  font_size = 10,
   color_scheme = "Gruvbox dark, medium (base16)",
   default_prog = { 'C:/cygwin64/bin/zsh', '--login' },
   window_padding = {
