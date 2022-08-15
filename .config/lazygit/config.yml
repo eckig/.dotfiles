@@ -4,6 +4,7 @@ gui:
   showIcons: true
   showFileTree: true
   showListFooter: false
+  showCommandLog: false
   showRandomTip: false
 os:
   editCommand: nvim
