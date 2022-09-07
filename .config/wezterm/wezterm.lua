@@ -13,5 +13,7 @@ return {
   tab_max_width = 70,
   use_fancy_tab_bar = false,
   initial_cols = 200,
-  initial_rows = 40,
+  initial_rows = 60,
+  use_dead_keys = false,
+  harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
 }
