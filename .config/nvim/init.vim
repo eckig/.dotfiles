@@ -27,7 +27,7 @@ set cursorline             " Find the current line quickly.
 set wrapscan               " Searches wrap around end-of-file.
 set nowrap
 
-set laststatus=3           " global status line
+set cmdheight=0
 
 set list                   " Show trailing spaces, tabs and non breakable spaces
 set listchars=trail:~,tab:>-,nbsp:␣
@@ -51,11 +51,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'folke/which-key.nvim'
+"Plug 'folke/which-key.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
-Plug 'lewis6991/spaceless.nvim'
 call plug#end()
 
 let mapleader = " "
