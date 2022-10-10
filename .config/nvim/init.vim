@@ -18,8 +18,6 @@ endif
 
 language en_US             " Force english language
 
-set mouse=a                " Enable Mouse
-
 set autoindent             " Indent according to previous line.
 set expandtab              " Use spaces instead of tabs.
 set softtabstop =4         " Tab key indents by 4 spaces.
