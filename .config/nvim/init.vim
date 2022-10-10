@@ -4,11 +4,21 @@ if s:is_win
   set shellcmdflag=/c
 endif
 
+if exists(':GuiFont')
+    GuiFont! Consolas:s10
+endif
+
+if exists(':GuiTabline')
+    GuiTabline 0
+endif
+
 if has('termguicolors')
   set termguicolors
 endif
 
 language en_US             " Force english language
+
+set mouse=a                " Enable Mouse
 
 set autoindent             " Indent according to previous line.
 set expandtab              " Use spaces instead of tabs.
@@ -54,7 +64,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 "Plug 'folke/which-key.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'RRethy/vim-illuminate'
-Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
+Plug 'petertriho/nvim-scrollbar'
 call plug#end()
 
 let mapleader = " "
