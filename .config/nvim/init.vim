@@ -61,8 +61,8 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 "Plug 'folke/which-key.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
-Plug 'RRethy/vim-illuminate'
-Plug 'petertriho/nvim-scrollbar'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
 call plug#end()
 
 let mapleader = " "
