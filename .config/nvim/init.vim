@@ -59,9 +59,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-"Plug 'folke/which-key.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
 call plug#end()
 
