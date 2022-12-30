@@ -1,0 +1,76 @@
+" Map leader to space
+let mapleader=" "
+
+set clipboard=unnamed,unnamedplus
+set clipboard+=ideaput
+set ideajoin
+set visualbell
+
+set incsearch              " Highlight while searching with / or ?.
+set hlsearch               " Keep matches highlighted.
+set smartcase
+set ignorecase
+
+set cursorline             " Find the current line quickly.
+set wrapscan               " Searches wrap around end-of-file.
+set nowrap
+set showmode
+set showcmd
+
+set highlightedyank
+set NERDTree
+set timeoutlen=5000         " increase the timeoutlen (default: 1000)
+
+set number relativenumber  " relative line numbers
+
+" keybindings
+map <leader>c <action>(CommentByLineComment)
+map <leader>x :NERDTreeFocus<CR>
+
+" Find
+map <leader>ff <action>(GotoClass)
+map <leader>h <Action>(ShowErrorDescription)
+nnoremap <leader>fr :action RecentFiles<CR>
+nnoremap <leader>fc :action FindInPath<CR>
+nnoremap <leader>fu :action FindUsages<CR>
+nnoremap <leader>fg :action Compare.LastVersion<CR>
+nnoremap <leader>u :action CodeCompletion<CR>
+nnoremap <leader>k :action ShowIntentionActions<CR>
+
+" code
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+map <Leader>= <action>(ReformatCode)
+map <leader>i <action>(Generate)
+
+
+" tabs
+map <leader><Tab> <action>(NextTab)
+map <leader>; <action>(PreviousTab)
+map <leader>q <action>(CloseContent)
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap <c-s> :action FileStructurePopup<CR>
+nnoremap <c-d> <c-d>zz
+nnoremap <c-u> <c-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotToDeclaration<CR>
+nnoremap gp :action GotToSuperMethod<CR>
+nnoremap gb :action Back<CR>
+nnoremap gf :action Forward<CR>
+nnoremap gh :action CallHierarchy<CR>
+
+nnoremap ,r :action ContextRun<CR>
+nnoremap ,c :action RunClass<CR>
+nnoremap ,f :action ChooseRunConfiguration<CR>
+nnoremap ,u :action Rerun<CR>
+nnoremap ,f :action RerunFailedTests<CR>
+nnoremap ,b :action ToggleLineBreakpoint<CR>
+nnoremap ,d :action ContextDebug<CR>
