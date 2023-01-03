@@ -27,32 +27,30 @@ set number relativenumber  " relative line numbers
 map <leader>c <action>(CommentByLineComment)
 map <leader>x :NERDTreeFocus<CR>
 
-" Find
+" leader actions
 map <leader>ff <action>(GotoClass)
-map <leader>h <Action>(ShowErrorDescription)
-nnoremap <leader>fr :action RecentFiles<CR>
-nnoremap <leader>fc :action FindInPath<CR>
-nnoremap <leader>fu :action FindUsages<CR>
-nnoremap <leader>fg :action Compare.LastVersion<CR>
-nnoremap <leader>u :action CodeCompletion<CR>
-nnoremap <leader>k :action ShowIntentionActions<CR>
-
-" code
-nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+map <leader>fc <action>(FindInPath)
+map <leader>fu <action>(FindUsages)
+map <leader>fg <action>(Compare.LastVersion)
+map <leader>h <action>(ShowErrorDescription)
+map <leader>u  <action>(CodeCompletion)
+map <leader>k  <action>(ShowIntentionActions)
+map <leader>s  <action>(FileStructurePopup)
+map <leader>q  <action>(CloseContent)
+map <leader>r <action> (Refactorings.QuickListPopupAction)
 map <Leader>= <action>(ReformatCode)
 map <leader>i <action>(Generate)
 
-
-" tabs
-map <leader><Tab> <action>(NextTab)
-map <leader>; <action>(PreviousTab)
-map <leader>q <action>(CloseContent)
+" buffer switch
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
 
 " Easy visual indentation
 vnoremap < <gv
 vnoremap > >gv
 
-nnoremap <c-s> :action FileStructurePopup<CR>
 nnoremap <c-d> <c-d>zz
 nnoremap <c-u> <c-u>zz
 nnoremap n nzzzv
@@ -62,14 +60,14 @@ nnoremap ge :action GotoNextError<CR>
 nnoremap gE :action GotoPreviousError<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotToDeclaration<CR>
-nnoremap gp :action GotToSuperMethod<CR>
+nnoremap gs :action GotToSuperMethod<CR>
 nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
 nnoremap gh :action CallHierarchy<CR>
+nnoremap gr :action RecentFiles<CR>
 
 nnoremap ,r :action ContextRun<CR>
 nnoremap ,c :action RunClass<CR>
-nnoremap ,f :action ChooseRunConfiguration<CR>
 nnoremap ,u :action Rerun<CR>
 nnoremap ,f :action RerunFailedTests<CR>
 nnoremap ,b :action ToggleLineBreakpoint<CR>
