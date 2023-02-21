@@ -20,5 +20,14 @@ config checkout
 ```
 [source](https://news.ycombinator.com/item?id=11070797)
 
-On windows set environment variable `XDG_CONFIG_HOME` to `C:\Users\{USER}\.config` ([source](https://vi.stackexchange.com/questions/12579/neovim-setup-on-ms-windows/12596)).
+## setup on windows
+
+1. Create powershell file at `$PROFILE` with
+```
+function do-dotfiles { git --git-dir=$HOME\.dotfiles\ --work-tree=$HOME $args }
+New-Alias -Name "config" -Value do-dotfiles
+```
+2. `config checkout`
+3. `config config status.showUntrackedFiles no`
+4. Set environment variable `XDG_CONFIG_HOME` to `C:\Users\{USER}\.config` ([source](https://vi.stackexchange.com/questions/12579/neovim-setup-on-ms-windows/12596)).
 
