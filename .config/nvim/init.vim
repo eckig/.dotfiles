@@ -5,11 +5,7 @@ if s:is_win
 endif
 
 if exists(':GuiFont')
-    GuiFont! Consolas:s10
-endif
-
-if exists(':GuiTabline')
-    GuiTabline 0
+    GuiFont Berkeley Mono
 endif
 
 if has('termguicolors')
@@ -58,7 +54,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
 call plug#end()

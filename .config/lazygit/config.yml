@@ -11,3 +11,6 @@ os:
   editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
 git:
   diffContextSize: 3
+keybinding:
+  universal:
+    nextTab: '%'

@@ -1,4 +1,3 @@
-" Map leader to space
 let mapleader=" "
 
 set clipboard=unnamed,unnamedplus
@@ -26,20 +25,21 @@ set number relativenumber  " relative line numbers
 " keybindings
 map <leader>c <action>(CommentByLineComment)
 map <leader>x :NERDTreeFocus<CR>
-
-" leader actions
 map <leader>ff <action>(GotoClass)
 map <leader>fc <action>(FindInPath)
 map <leader>fu <action>(FindUsages)
 map <leader>fg <action>(Compare.LastVersion)
-map <leader>h <action>(ShowErrorDescription)
+map <leader>fh <action>(CallHierarchy)
+map <leader>h  <action>(ShowErrorDescription)
 map <leader>u  <action>(CodeCompletion)
 map <leader>k  <action>(ShowIntentionActions)
 map <leader>s  <action>(FileStructurePopup)
 map <leader>q  <action>(CloseContent)
-map <leader>r <action> (Refactorings.QuickListPopupAction)
-map <Leader>= <action>(ReformatCode)
-map <leader>i <action>(Generate)
+map <leader>r  <action>(Refactorings.QuickListPopupAction)
+map <Leader>=  <action>(ReformatCode)
+map <leader>i  <action>(Generate)
+map <leader>db <action>(PreviousDiff) 
+map <leader>df <action>(NextDiff) 
 
 " buffer switch
 nnoremap <silent> [b :bprevious<CR>
@@ -53,17 +53,17 @@ vnoremap > >gv
 
 nnoremap <c-d> <c-d>zz
 nnoremap <c-u> <c-u>zz
+nnoremap % %zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
 nnoremap ge :action GotoNextError<CR>
 nnoremap gE :action GotoPreviousError<CR>
 nnoremap gi :action GotoImplementation<CR>
-nnoremap gd :action GotToDeclaration<CR>
+nnoremap gD :action GotToDeclaration<CR>
 nnoremap gs :action GotToSuperMethod<CR>
 nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
-nnoremap gh :action CallHierarchy<CR>
 nnoremap gr :action RecentFiles<CR>
 
 nnoremap ,r :action ContextRun<CR>
