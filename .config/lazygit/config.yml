@@ -7,8 +7,8 @@ gui:
   showCommandLog: false
   showRandomTip: false
 os:
-  editCommand: nvim
-  editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
+  edit: 'nvim {{filename}}'
+  editAtLine: 'nvim +{{line}} -- {{filename}}'
 git:
   diffContextSize: 3
 keybinding:
