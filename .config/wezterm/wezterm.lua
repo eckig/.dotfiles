@@ -1,5 +1,17 @@
 local wezterm = require 'wezterm'
+local launch_menu = {}
+
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  table.insert(launch_menu, {
+    label = 'PowerShell',
+    args = { 'powershell.exe', '-NoLogo' },
+})
+end
+
 return {
+  keys = {
+    { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
+  },
   font = wezterm.font 'Berkeley Mono',
   font_size = 10,
   color_scheme = "Gruvbox dark, medium (base16)",
@@ -15,5 +27,5 @@ return {
   initial_cols = 200,
   initial_rows = 45,
   use_dead_keys = false,
-  harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
+  launch_menu = launch_menu,
 }
