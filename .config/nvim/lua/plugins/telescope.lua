@@ -24,9 +24,6 @@ return {
         desc = "Find grep",
       },
     },
-    dependencies = {
-      "nvim-telescope/telescope-fzy-native.nvim",
-    },
     config = function()
       local new_maker = function(filepath, bufnr, opts)
         opts = opts or {}
@@ -43,10 +40,8 @@ return {
           end
         end)
       end
-      require("telescope").load_extension("fzy_native")
       require("telescope").setup({
         defaults = {
-          file_sorter = require("telescope.sorters").get_fzy_sorter,
           color_devicons = true,
           buffer_previewer_maker = new_maker,
           file_ignore_patterns = {
