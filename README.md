@@ -24,8 +24,7 @@ config checkout
 
 1. Create powershell file at `$PROFILE` with
 ```
-function do-dotfiles { git --git-dir=$HOME\.dotfiles\ --work-tree=$HOME $args }
-New-Alias -Name "config" -Value do-dotfiles
+function config { git --git-dir=$HOME\.dotfiles\ --work-tree=$HOME $args }
 ```
 2. `config checkout`
 3. `config config status.showUntrackedFiles no`
