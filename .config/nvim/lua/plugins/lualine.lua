@@ -3,6 +3,7 @@ return {
   opts = function()
     return {
       sections = {
+       lualine_y = { "location" },
         -- disable clock
         lualine_z = {},
       },
