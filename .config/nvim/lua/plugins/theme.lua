@@ -1,11 +1,14 @@
 return {
-  "projekt0n/github-nvim-theme",
+  "ronisbr/nano-theme.nvim",
   lazy = false,
 
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "github_light",
+      colorscheme = "nano-theme",
     },
+    init = function()
+      vim.o.background = "light"
+    end,
   },
 }

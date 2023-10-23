@@ -42,8 +42,8 @@ map <leader>db <action>(PreviousDiff)
 map <leader>df <action>(NextDiff) 
 
 " buffer switch
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> H :bprevious<CR>
+nnoremap <silent> L :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
