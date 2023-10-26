@@ -4,6 +4,7 @@
 
 vim.opt.guifont = { "BerkeleyMono Nerd Font:h10" }
 vim.wo.conceallevel = 0
+vim.opt.foldenable = false
 
 -- disable language provider support (lua and vimscript plugins only)
 vim.g.loaded_perl_provider = 0
