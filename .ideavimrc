@@ -36,10 +36,10 @@ map <leader>k  <action>(ShowIntentionActions)
 map <leader>s  <action>(FileStructurePopup)
 map qq  <action>(CloseContent)
 map <leader>r  <action>(Refactorings.QuickListPopupAction)
-map <Leader>=  <action>(ReformatCode)
 map <leader>i  <action>(Generate)
 map <leader>db <action>(PreviousDiff) 
-map <leader>df <action>(NextDiff) 
+map <leader>df <action>(NextDiff)
+map <leader>vv <action>(IntroduceVariable)
 
 " buffer switch
 nnoremap <silent> H :bprevious<CR>
