@@ -17,14 +17,12 @@ set showmode
 set showcmd
 
 set highlightedyank
-set NERDTree
 set timeoutlen=5000         " increase the timeoutlen (default: 1000)
 
 set number relativenumber  " relative line numbers
 
 " keybindings
 map <leader>c <action>(CommentByLineComment)
-map <leader>x :NERDTreeFocus<CR>
 map <leader>ff <action>(GotoClass)
 map <leader>fc <action>(FindInPath)
 map <leader>fu <action>(FindUsages)
@@ -34,18 +32,17 @@ map <leader>h  <action>(ShowErrorDescription)
 map <leader>u  <action>(CodeCompletion)
 map <leader>k  <action>(ShowIntentionActions)
 map <leader>s  <action>(FileStructurePopup)
-map qq  <action>(CloseContent)
+map qq         <action>(CloseContent)
 map <leader>r  <action>(Refactorings.QuickListPopupAction)
 map <leader>i  <action>(Generate)
 map <leader>db <action>(PreviousDiff) 
 map <leader>df <action>(NextDiff)
 map <leader>vv <action>(IntroduceVariable)
+map <leader>ww <action>(SurroundWith)
 
 " buffer switch
 nnoremap <silent> H :bprevious<CR>
 nnoremap <silent> L :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
 
 " Easy visual indentation
 vnoremap < <gv
