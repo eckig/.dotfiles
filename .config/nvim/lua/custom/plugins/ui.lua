@@ -34,11 +34,6 @@ return {
 
   {
     "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    keys = {
-      { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-      { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-    },
     opts = {
       options = {
         always_show_bufferline = true,
@@ -63,21 +58,19 @@ return {
         options = {
           theme = "auto",
           globalstatus = true,
-          disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
         },
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch" },
-
           lualine_c = {
-			{
-			  function()
-				return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
-			  end,
-			  icon = "",
-			  cond = hide_in_width,
-			  separator = '',
-			},
+            {
+              function()
+              return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+              end,
+              icon = "",
+              cond = hide_in_width,
+              separator = '',
+            },
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           },
           lualine_x = {
@@ -116,21 +109,6 @@ return {
         tab_char = "│",
       },
       scope = { enabled = false },
-      exclude = {
-        filetypes = {
-          "help",
-          "alpha",
-          "dashboard",
-          "neo-tree",
-          "Trouble",
-          "trouble",
-          "lazy",
-          "mason",
-          "notify",
-          "toggleterm",
-          "lazyterm",
-        },
-      },
     },
     main = "ibl",
   },

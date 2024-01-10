@@ -1,9 +1,9 @@
 return {
-  "ronisbr/nano-theme.nvim",
+  "ellisonleao/gruvbox.nvim",
   lazy = false,
   priority = 1000,
   init = function()
-    vim.o.background = "light"
-    vim.cmd.colorscheme 'nano-theme'
+    vim.o.background = "dark"
+    vim.cmd.colorscheme "gruvbox"
   end,
 }
