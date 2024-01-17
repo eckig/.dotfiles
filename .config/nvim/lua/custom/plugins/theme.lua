@@ -1,9 +1,16 @@
 return {
-  "ellisonleao/gruvbox.nvim",
+  "catppuccin/nvim",
+  name = "catppuccin",
   lazy = false,
-  priority = 1000,
   init = function()
-    vim.o.background = "dark"
-    vim.cmd.colorscheme "gruvbox"
+    require("catppuccin").setup({
+      transparent_background = true,
+      integrations = {
+        notify = true,
+        treesitter = true,
+        noice = true,
+      },
+    })
+    vim.cmd.colorscheme "catppuccin-latte"
   end,
 }
