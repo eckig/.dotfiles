@@ -39,6 +39,7 @@ map <leader>db <action>(PreviousDiff)
 map <leader>df <action>(NextDiff)
 map <leader>vv <action>(IntroduceVariable)
 map <leader>ww <action>(SurroundWith)
+map <leader>xx <action>(EvaluateExpression)
 
 " buffer switch
 nnoremap <silent> H :bprevious<CR>
