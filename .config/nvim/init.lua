@@ -1,4 +1,4 @@
--- [[ Clipboard for WSL ]]
+-- Clipboard for WSL
 if vim.fn.has('wsl') == 1 then
     vim.g.clipboard = {
         name = 'WslClipboard',
@@ -14,7 +14,7 @@ if vim.fn.has('wsl') == 1 then
     }
 end
 
--- [[ Setting options ]]
+-- Options
 local opt = vim.opt
 vim.g.mapleader = ' ' -- Set <space> as the leader key
 vim.g.maplocalleader = ' '
@@ -71,7 +71,7 @@ opt.fillchars = {
   eob = " ",
 }
 
--- [[ Install `lazy.nvim` plugin manager ]]
+-- lazy.nvim plugin
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -84,19 +84,12 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
-
--- [[ Configure plugins ]]
 require('lazy').setup({
-  {
-    -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-  },
   { import = 'custom.plugins' },
 }, {})
 
 
--- [[ Keymaps ]]
+-- Keymap
 local map = vim.keymap.set
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
@@ -105,7 +98,7 @@ map("v", ">", ">gv")
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "qq", "<cmd>bd<cr>", { desc = "close file" })
 
--- Check if we need to reload the file when it changed
+-- Reload file on change
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   command = "checktime",
 })
@@ -115,16 +108,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+-- Open file at last open location
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+      vim.api.nvim_win_set_cursor(0, mark)
+    end
+  end,
+})
 
-
--- [[ Configure Treesitter ]]
+-- Configure Treesitter
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown', 'markdown_inline' },
-    -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
-    -- Install languages synchronously (only applied to `ensure_installed`)
-    sync_install = false,
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript',
+      'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown', 'markdown_inline', 'json', 'css', 'html' },
     highlight = { enable = true },
   }
 end, 0)
