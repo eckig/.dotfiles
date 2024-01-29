@@ -88,7 +88,6 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
-
 -- Keymap
 local map = vim.keymap.set
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
@@ -97,6 +96,16 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "qq", "<cmd>bd<cr>", { desc = "close file" })
+
+-- Only yank deleted line if not empty
+local function smartdd()
+  if vim.fn.prevnonblank('.') ~= vim.fn.line('.') then
+    return "\"_dd"
+  else
+    return "dd"
+  end
+end
+map("n", "dd", smartdd, { noremap = true, expr = true } )
 
 -- Reload file on change
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
