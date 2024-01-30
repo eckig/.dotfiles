@@ -1,15 +1,4 @@
 return {
-  {
-    "akinsho/bufferline.nvim",
-    opts = {
-      options = {
-        always_show_bufferline = true,
-      },
-    },
-    config = function(_, opts)
-      require("bufferline").setup(opts)
-    end
-  },
 
   -- statusline
   {
@@ -65,19 +54,6 @@ return {
         extensions = { "lazy" },
       }
     end,
-  },
-
-  -- indent guides for Neovim
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      indent = {
-        char = "│",
-        tab_char = "│",
-      },
-      scope = { enabled = false },
-    },
-    main = "ibl",
   },
 
   -- icons
