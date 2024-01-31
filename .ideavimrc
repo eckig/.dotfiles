@@ -35,8 +35,6 @@ map <leader>s  <action>(FileStructurePopup)
 map qq         <action>(CloseContent)
 map <leader>r  <action>(Refactorings.QuickListPopupAction)
 map <leader>i  <action>(Generate)
-map <leader>db <action>(PreviousDiff) 
-map <leader>df <action>(NextDiff)
 map <leader>vv <action>(IntroduceVariable)
 map <leader>ww <action>(SurroundWith)
 map <leader>xx <action>(EvaluateExpression)
@@ -60,8 +58,6 @@ nnoremap gE :action GotoPreviousError<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gD :action GotToDeclaration<CR>
 nnoremap gs :action GotToSuperMethod<CR>
-nnoremap gb :action Back<CR>
-nnoremap gf :action Forward<CR>
 nnoremap gr :action RecentFiles<CR>
 
 nnoremap ,r :action ContextRun<CR>
