@@ -118,7 +118,8 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript',
-      'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown', 'markdown_inline', 'json', 'css', 'html' },
+      'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown', 'markdown_inline', 'json', 'css', 'html',
+      'yaml', },
     highlight = { enable = true },
   }
 end, 0)

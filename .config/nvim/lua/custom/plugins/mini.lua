@@ -1,10 +1,14 @@
 return {
   { 'echasnovski/mini.nvim', version = false, config = function()
       require('mini.tabline').setup()
-      require('mini.notify').setup()
 
-      require('mini.indentscope').setup()
-      require('mini.indentscope').gen_animation.none()
+      local notify = require('mini.notify')
+      notify.setup()
+      vim.notify = notify.make_notify()
+
+      local indentscope = require('mini.indentscope')
+      indentscope.setup()
+      indentscope.gen_animation.none()
 
       local hipatterns = require('mini.hipatterns')
       hipatterns.setup({
@@ -16,6 +20,8 @@ return {
           hex_color = hipatterns.gen_highlighter.hex_color(),
         },
       })
+
+      require('mini.statusline').setup()
 
     end,},
 }
