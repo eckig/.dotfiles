@@ -4,6 +4,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
   },
+
   -- Fuzzy finder.
   {
     "nvim-telescope/telescope.nvim",
