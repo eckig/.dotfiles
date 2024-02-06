@@ -117,10 +117,15 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- Configure Treesitter
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript',
+    ensure_installed = {
+      'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript',
       'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown', 'markdown_inline', 'json', 'css', 'html',
-      'yaml', },
-    highlight = { enable = true },
+      'yaml',
+    },
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false
+    },
   }
 end, 0)
 
