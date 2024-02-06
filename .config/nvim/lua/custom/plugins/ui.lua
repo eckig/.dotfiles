@@ -7,9 +7,14 @@ return {
       require("catppuccin").setup({
         transparent_background = true,
         integrations = {
-          notify = true,
           treesitter = true,
-          noice = true,
+          gitsigns = true,
+          telescope = {
+            enabled = true,
+          },
+          mini = {
+            enabled = true,
+          },
         },
       })
       vim.cmd.colorscheme "catppuccin-latte"

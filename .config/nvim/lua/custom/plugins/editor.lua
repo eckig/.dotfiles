@@ -18,37 +18,10 @@ return {
       },
     },
     keys = {
-      {
-        "<leader>ff",
-        function()
-          require("telescope.builtin").git_files()
-        end,
-      },
-      {
-        "<leader>fr",
-        function()
-          require("telescope.builtin").oldfiles()
-        end,
-      },
-      {
-        "<leader>fg",
-        function()
-          require("telescope.builtin").live_grep()
-        end,
-      },
+      { "<leader>ff", function() require("telescope.builtin").git_files() end, },
+      { "<leader>fr", function() require("telescope.builtin").oldfiles() end, },
+      { "<leader>fg", function() require("telescope.builtin").live_grep() end, },
     },
-    opts = function()
-      local actions = require("telescope.actions")
-      return {
-        defaults = {
-          mappings = {
-            n = {
-              ["q"] = actions.close,
-            },
-          },
-        },
-      }
-    end,
   },
 
   -- highlight text that changed

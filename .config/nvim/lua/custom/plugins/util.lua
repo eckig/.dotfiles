@@ -5,8 +5,12 @@ return {
   -- auto mkdir
   { "jghauser/mkdir.nvim", lazy = true },
 
-  -- search
-  { "nvim-pack/nvim-spectre" },
+  -- search/replace
+  { "nvim-pack/nvim-spectre",
+    keys = {
+      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+    },
+  },
 
   -- dir view
   { "stevearc/oil.nvim", config = function()
