@@ -2,10 +2,6 @@ return {
   { 'echasnovski/mini.nvim', version = false, config = function()
       require('mini.tabline').setup()
 
-      local notify = require('mini.notify')
-      notify.setup()
-      vim.notify = notify.make_notify()
-
       local indentscope = require('mini.indentscope')
       indentscope.setup()
       indentscope.gen_animation.none()
@@ -21,7 +17,7 @@ return {
         },
       })
 
-      get_filetype_icon = function()
+      local get_filetype_icon = function()
         local file_name, file_ext = vim.fn.expand('%:t'), vim.fn.expand('%:e')
         return require('nvim-web-devicons').get_icon(file_name, file_ext, { default = true })
       end
@@ -40,20 +36,27 @@ return {
         return string.format('%s %s %s', filetype, encoding, format)
       end
 
+      local get_root_dir = function()
+        local root_patterns = { ".git", "pom.xml", "build.gradle" }
+        local cur_dir_buf = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
+        local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true, path = cur_dir_buf })[1])
+        if root_dir == nil then return vim.fn.getcwd() end
+        return root_dir
+      end
+
       require('mini.statusline').setup({
         content = {
           active = function()
             local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
-            local git           = MiniStatusline.section_git({ trunc_width = 75 })
-            local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+            local git           = MiniStatusline.section_git({ trunc_width = 120 })
             local fileinfo      = min_section_fileinfo()
             local location      = '%l|%L'
-            local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
-            local dir           = string.format(' %s', vim.fn.fnamemodify(vim.fn.getcwd(), ':t'))
+            local search        = MiniStatusline.section_searchcount({ trunc_width = 120 })
+            local dir           = string.format(' %s', vim.fn.fnamemodify(get_root_dir(), ':t'))
 
             return MiniStatusline.combine_groups({
               { hl = mode_hl,                  strings = { mode } },
-              { hl = 'MiniStatuslineDevinfo',  strings = { git, diagnostics } },
+              { hl = 'MiniStatuslineDevinfo',  strings = { git } },
               '%<', -- Mark general truncate point
               { hl = 'MiniStatuslineFilename', strings = { dir } },
               '%=', -- End left alignment

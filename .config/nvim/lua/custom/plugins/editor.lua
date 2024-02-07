@@ -3,6 +3,19 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = {
+          'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript',
+          'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown', 'markdown_inline', 'json', 'css', 'html',
+          'yaml',
+        },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false
+        },
+      }
+    end,
   },
 
   -- Fuzzy finder.

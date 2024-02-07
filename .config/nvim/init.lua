@@ -55,7 +55,6 @@ opt.undofile = true
 opt.undolevels = 10000
 opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
-opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 opt.fillchars = {
@@ -113,19 +112,3 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
-
--- Configure Treesitter
-vim.defer_fn(function()
-  require('nvim-treesitter.configs').setup {
-    ensure_installed = {
-      'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript',
-      'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown', 'markdown_inline', 'json', 'css', 'html',
-      'yaml',
-    },
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false
-    },
-  }
-end, 0)
-

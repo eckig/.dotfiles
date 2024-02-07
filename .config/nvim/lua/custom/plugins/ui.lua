@@ -22,4 +22,20 @@ return {
   },
 
   { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-cmdline", init = function()
+      local cmp = require'cmp'
+      cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({ { name = 'path' } }, {
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      })
+    })
+    end
+  },
 }
