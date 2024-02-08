@@ -80,7 +80,6 @@ map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "qq", "<cmd>bd<cr>", { desc = "close file" })
 
 -- Only yank deleted line if not empty
