@@ -1,11 +1,43 @@
 return {
   { 'echasnovski/mini.nvim', version = false, config = function()
+      -- tabs
       require('mini.tabline').setup()
 
+      ----------------------------------------------------------------------------------------------------------------
+      -- notifications
+      local notify = require('mini.notify')
+      notify.setup()
+      vim.notify = notify.make_notify()
+
+      ----------------------------------------------------------------------------------------------------------------
+      -- start screen
+
+      local logo = [[
+███╗   ██╗ ███████╗  ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
+████╗  ██║ ██╔════╝ ██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
+██╔██╗ ██║ █████╗   ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
+██║╚██╗██║ ██╔══╝   ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
+██║ ╚████║ ███████╗ ╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
+╚═╝  ╚═══╝ ╚══════╝  ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]]
+
+      local starter = require('mini.starter')
+      starter.setup({
+        header = logo,
+        items = {
+          starter.sections.recent_files(9, false, false),
+          { name = 'Plugins',        action = 'lua require("lazy").home()',    section = 'Misc' },
+          { name = 'Find & Replace', action = 'lua require("spectre").open()', section = 'Misc' },
+        },
+      })
+
+      ----------------------------------------------------------------------------------------------------------------
+      -- indent guide
       local indentscope = require('mini.indentscope')
       indentscope.setup()
       indentscope.gen_animation.none()
 
+      ----------------------------------------------------------------------------------------------------------------
+      -- text highlighting
       local hipatterns = require('mini.hipatterns')
       hipatterns.setup({
         highlighters = {
@@ -17,6 +49,8 @@ return {
         },
       })
 
+      ----------------------------------------------------------------------------------------------------------------
+      -- status line
       local get_filetype_icon = function()
         local file_name, file_ext = vim.fn.expand('%:t'), vim.fn.expand('%:e')
         return require('nvim-web-devicons').get_icon(file_name, file_ext, { default = true })

@@ -112,3 +112,23 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
+-- compare with clipboard
+local function compare_to_clipboard()
+  local ftype = vim.api.nvim_eval("&filetype")
+  vim.cmd(string.format([[
+    execute "normal! \"xy"
+    vsplit
+    enew
+    normal! P
+    setlocal buftype=nowrite
+    set filetype=%s
+    diffthis
+    execute "normal! \<C-w>\<C-w>"
+    enew
+    set filetype=%s
+    normal! "xP
+    diffthis
+  ]], ftype, ftype))
+end
+map("x", "<leader>cd", compare_to_clipboard, { noremap = true } )
+
