@@ -1,7 +1,21 @@
 return {
-  { 'echasnovski/mini.nvim', version = false, config = function()
+  { 'echasnovski/mini.nvim',
+    version = false,
+    lazy = false,
+    keys = {
+      { "<leader>ff", function() require("mini.pick").builtin.files({ tool = 'git' }) end, },
+      { "<leader>fr", function() require("mini.extra").pickers.oldfiles() end, },
+      { "<leader>fg", function() require("mini.pick").builtin.grep_live() end, },
+    },
+    config = function()
       -- tabs
       require('mini.tabline').setup()
+
+      -- picker
+      require('mini.pick').setup()
+
+      -- extras
+      require('mini.extra').setup()
 
       ----------------------------------------------------------------------------------------------------------------
       -- notifications
@@ -56,6 +70,19 @@ return {
         return require('nvim-web-devicons').get_icon(file_name, file_ext, { default = true })
       end
 
+      local file_icon = { unix = " LF", dos = " CRLF", mac = " CR", }
+      local file_format = function()
+        local text = vim.bo.fileformat
+        if text == '' then
+          return ''
+        end
+        local icon = file_icon[text]
+        if icon == '' then
+          return text
+        end
+        return icon
+      end
+
       local min_section_fileinfo = function()
         local filetype = vim.bo.filetype
 
@@ -65,7 +92,7 @@ return {
         if icon ~= '' then filetype = string.format('%s %s', icon, filetype) end
 
         local encoding = vim.bo.fileencoding or vim.bo.encoding
-        local format = vim.bo.fileformat
+        local format = file_format()
 
         return string.format('%s %s %s', filetype, encoding, format)
       end
@@ -85,8 +112,7 @@ return {
             local git           = MiniStatusline.section_git({ trunc_width = 120 })
             local fileinfo      = min_section_fileinfo()
             local location      = '%l|%L'
-            local search        = MiniStatusline.section_searchcount({ trunc_width = 120 })
-            local dir           = string.format(' %s', vim.fn.fnamemodify(get_root_dir(), ':t'))
+            local dir           = ' %s' .. vim.fn.fnamemodify(get_root_dir(), ':t')
 
             return MiniStatusline.combine_groups({
               { hl = mode_hl,                  strings = { mode } },
@@ -95,7 +121,7 @@ return {
               { hl = 'MiniStatuslineFilename', strings = { dir } },
               '%=', -- End left alignment
               { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-              { hl = mode_hl,                  strings = { search, location } },
+              { hl = mode_hl,                  strings = { location } },
             })
           end,
           inactive = nil,

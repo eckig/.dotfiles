@@ -26,6 +26,7 @@ opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 0
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
+opt.cursorcolumn = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
 opt.ignorecase = true -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute

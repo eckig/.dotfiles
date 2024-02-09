@@ -17,25 +17,6 @@ return {
     end,
   },
 
-  -- Fuzzy finder.
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        config = function()
-            require("telescope").load_extension("fzf")
-        end,
-      },
-    },
-    keys = {
-      { "<leader>ff", function() require("telescope.builtin").git_files() end, },
-      { "<leader>fr", function() require("telescope.builtin").oldfiles() end, },
-      { "<leader>fg", function() require("telescope.builtin").live_grep() end, },
-    },
-  },
-
   -- highlight text that changed
   {
     "lewis6991/gitsigns.nvim",
