@@ -17,6 +17,9 @@ return {
       -- extras
       require('mini.extra').setup()
 
+      -- cursorword
+      require('mini.cursorword').setup()
+
       ----------------------------------------------------------------------------------------------------------------
       -- notifications
       local notify = require('mini.notify')
@@ -25,22 +28,19 @@ return {
 
       ----------------------------------------------------------------------------------------------------------------
       -- start screen
-
-      local logo = [[
+      local starter = require('mini.starter')
+      starter.setup({
+        header = [[
 ███╗   ██╗ ███████╗  ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
 ████╗  ██║ ██╔════╝ ██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
 ██╔██╗ ██║ █████╗   ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
 ██║╚██╗██║ ██╔══╝   ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
 ██║ ╚████║ ███████╗ ╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
-╚═╝  ╚═══╝ ╚══════╝  ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]]
-
-      local starter = require('mini.starter')
-      starter.setup({
-        header = logo,
+╚═╝  ╚═══╝ ╚══════╝  ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]] ,
         items = {
-          starter.sections.recent_files(9, false, false),
-          { name = 'Plugins',        action = 'lua require("lazy").home()',    section = 'Misc' },
-          { name = 'Find & Replace', action = 'lua require("spectre").open()', section = 'Misc' },
+          starter.sections.recent_files(12, false, false),
+          { name = 'Update Plugins',        action = 'lua require("lazy").update()', section = 'Misc' },
+          { name = 'Find & Replace', action = 'lua require("spectre").open()',       section = 'Misc' },
         },
       })
 
@@ -113,6 +113,8 @@ return {
             local fileinfo      = min_section_fileinfo()
             local location      = '%l|%L'
             local dir           = ' %s' .. vim.fn.fnamemodify(get_root_dir(), ':t')
+
+
 
             return MiniStatusline.combine_groups({
               { hl = mode_hl,                  strings = { mode } },
