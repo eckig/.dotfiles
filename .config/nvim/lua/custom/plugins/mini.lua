@@ -32,6 +32,10 @@ return {
       ----------------------------------------------------------------------------------------------------------------
       -- start screen
       local starter = require('mini.starter')
+
+      local disable_statusline = function(data) vim.b[data.buf].ministatusline_disable = true end
+      vim.api.nvim_create_autocmd('User', { pattern = 'MiniStarterOpened', callback = disable_statusline })
+
       starter.setup({
         header = [[
 ███╗   ██╗ ███████╗  ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
