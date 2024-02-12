@@ -20,6 +20,9 @@ return {
       -- cursorword
       require('mini.cursorword').setup()
 
+      -- trailspace
+      require('mini.trailspace').setup()
+
       ----------------------------------------------------------------------------------------------------------------
       -- notifications
       local notify = require('mini.notify')
@@ -112,9 +115,8 @@ return {
             local git           = MiniStatusline.section_git({ trunc_width = 120 })
             local fileinfo      = min_section_fileinfo()
             local location      = '%l|%L'
+            local search        = MiniStatusline.section_searchcount({ trunc_width = 120 })
             local dir           = ' %s' .. vim.fn.fnamemodify(get_root_dir(), ':t')
-
-
 
             return MiniStatusline.combine_groups({
               { hl = mode_hl,                  strings = { mode } },
@@ -123,7 +125,7 @@ return {
               { hl = 'MiniStatuslineFilename', strings = { dir } },
               '%=', -- End left alignment
               { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-              { hl = mode_hl,                  strings = { location } },
+              { hl = mode_hl,                  strings = { search, location } },
             })
           end,
           inactive = nil,
