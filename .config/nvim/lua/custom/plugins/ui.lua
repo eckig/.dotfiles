@@ -9,9 +9,6 @@ return {
         integrations = {
           treesitter = true,
           gitsigns = true,
-          telescope = {
-            enabled = true,
-          },
           mini = {
             enabled = true,
           },

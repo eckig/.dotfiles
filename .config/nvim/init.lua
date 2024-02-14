@@ -82,6 +82,12 @@ map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 map("n", "qq", "<cmd>bd<cr>", { desc = "close file" })
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+map("n", "<c-d>", "<c-d>zz")
+map("n", "<c-u>", "<c-u>zz")
+map("n", "%", "%z")
+map("n", "n", "nzzz")
+map("n", "N", "Nzzz")
 
 -- Only yank deleted line if not empty
 local function smartdd()

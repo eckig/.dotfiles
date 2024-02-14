@@ -35,9 +35,6 @@ return {
   -- library used by other plugins
   { "nvim-lua/plenary.nvim", lazy = true },
 
-  -- auto mkdir
-  { "jghauser/mkdir.nvim", lazy = true },
-
   -- search/replace
   { "nvim-pack/nvim-spectre",
     keys = {

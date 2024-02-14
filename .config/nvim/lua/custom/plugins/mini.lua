@@ -125,6 +125,7 @@ return {
             return MiniStatusline.combine_groups({
               { hl = mode_hl,                  strings = { mode } },
               { hl = 'MiniStatuslineDevinfo',  strings = { git } },
+
               '%<', -- Mark general truncate point
               { hl = 'MiniStatuslineFilename', strings = { dir } },
               '%=', -- End left alignment
@@ -135,6 +136,5 @@ return {
           inactive = nil,
         }
       })
-
     end,},
 }
