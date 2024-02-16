@@ -1,56 +1,48 @@
-return {
-  -- Treesitter
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = {
-          'c', 'lua', 'javascript', 'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown',
-          'markdown_inline', 'json', 'css', 'html', 'yaml',
-        },
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false
-        },
-      }
-    end,
-  },
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
-  -- highlight text that changed
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
-      },
+later(function()
+  -- utils
+  add('nvim-lua/plenary.nvim')
+
+  -- treesitter
+  add('nvim-treesitter/nvim-treesitter')
+  require('nvim-treesitter.configs').setup {
+    ensure_installed = {
+      'c', 'lua', 'javascript', 'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown',
+      'markdown_inline', 'json', 'css', 'html', 'yaml',
     },
-  },
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false
+    },
+  }
 
-  -- library used by other plugins
-  { "nvim-lua/plenary.nvim", lazy = true },
+  -- git status
+  add('lewis6991/gitsigns.nvim')
+  require('gitsigns').setup({
+    signs = {
+      add = { text = "▎" },
+      change = { text = "▎" },
+      delete = { text = "" },
+      topdelete = { text = "" },
+      changedelete = { text = "▎" },
+      untracked = { text = "▎" },
+    },
+  })
 
   -- search/replace
-  { "nvim-pack/nvim-spectre",
-    keys = {
-      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
-    },
-  },
+  add('nvim-pack/nvim-spectre')
+  vim.keymap.set("n", "<leader>sr", function() require("spectre").open() end )
 
-  -- dir view
-  { "stevearc/oil.nvim", config = function()
-      require("oil").setup()
-    end,
-  },
+  -- directory listing
+  add('stevearc/oil.nvim')
+  require("oil").setup({
+    view_options = {
+      show_hidden = true
+    }
+  })
 
-  -- Sudo
-  { 'lambdalisue/suda.vim', config = function()
-      vim.g.suda_smart_edit = 1
-    end,
-  },
-}
+  -- sudo
+  add('lambdalisue/suda.vim')
+  vim.g.suda_smart_edit = 1
+end)
