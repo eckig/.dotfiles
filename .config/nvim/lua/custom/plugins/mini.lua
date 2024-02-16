@@ -1,4 +1,5 @@
 local now, later = MiniDeps.now, MiniDeps.later
+local version = vim.version()
 
 now(function()
   -- tabs
@@ -8,10 +9,7 @@ now(function()
   -- start screen
 
   local starter = require('mini.starter')
-
-  local disable_statusline = function(data) vim.b[data.buf].ministatusline_disable = true end
-  vim.api.nvim_create_autocmd('User', { pattern = 'MiniStarterOpened', callback = disable_statusline })
-
+  local version_desc = string.format(' %s.%s.%s', version.major, version.minor, version.patch)
   starter.setup({
     header = [[
 ███╗   ██╗ ███████╗  ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
@@ -19,58 +17,19 @@ now(function()
 ██╔██╗ ██║ █████╗   ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
 ██║╚██╗██║ ██╔══╝   ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
 ██║ ╚████║ ███████╗ ╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
-╚═╝  ╚═══╝ ╚══════╝  ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]] ,
+╚═╝  ╚═══╝ ╚══════╝  ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]] .. version_desc,
     items = {
       starter.sections.recent_files(10, false, false),
       { name = 'Find & Replace', action = 'lua require("spectre").open()', section = 'Search' },
       { name = 'Update Plugins', action = 'DepsUpdate', section = 'Plugins' },
       { name = 'Clean Plugins', action = 'DepsClean', section = 'Plugins' },
     },
-  })
-end)
-
-later(function()
-  -- extras
-  local mini_extra = require('mini.extra')
-  mini_extra.setup()
-
-  -- picker
-  local picker = require('mini.pick')
-  picker.setup()
-  vim.keymap.set("n", "<leader>ff", function() picker.builtin.files({ tool = 'git' }) end )
-  vim.keymap.set("n", "<leader>fr", function() mini_extra.pickers.oldfiles() end )
-  vim.keymap.set("n", "<leader>fg", function() picker.builtin.grep_live() end )
-  vim.keymap.set("n", "<leader>fb", function() picker.builtin.buffers() end )
-
-  -- cursorword
-  require('mini.cursorword').setup()
-
-  -- trailspace
-  require('mini.trailspace').setup()
-
-  -- notifications
-  local notify = require('mini.notify')
-  notify.setup()
-  vim.notify = notify.make_notify()
-
-  -- indent guide
-  local indentscope = require('mini.indentscope')
-  indentscope.setup()
-  indentscope.gen_animation.none()
-
-  ----------------------------------------------------------------------------------------------------------------
-  -- text highlighting
-
-  local hipatterns = require('mini.hipatterns')
-  hipatterns.setup({
-    highlighters = {
-      fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-      hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
-      todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
-      note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
-      hex_color = hipatterns.gen_highlighter.hex_color(),
+    content_hooks = {
+      starter.gen_hook.adding_bullet("[] "),
+      starter.gen_hook.aligning('center', 'center'),
     },
   })
+
 
   ----------------------------------------------------------------------------------------------------------------
   -- status line
@@ -129,6 +88,9 @@ later(function()
   set_cust_hl('MiniStatuslineModeOther',   { link = 'IncSearch' })
   set_cust_hl('MiniStatuslineDevinfo',     { link = 'StatusLine' })
 
+  local disable_statusline = function(data) vim.b[data.buf].ministatusline_disable = true end
+  vim.api.nvim_create_autocmd('User', { pattern = 'MiniStarterOpened', callback = disable_statusline })
+
   require('mini.statusline').setup({
     content = {
       active = function()
@@ -181,4 +143,47 @@ later(function()
       inactive = nil,
     }
   })
+end)
+
+later(function()
+  -- extras
+  local mini_extra = require('mini.extra')
+  mini_extra.setup()
+
+  -- picker
+  local picker = require('mini.pick')
+  picker.setup()
+  vim.keymap.set("n", "<leader>ff", function() picker.builtin.files({ tool = 'git' }) end )
+  vim.keymap.set("n", "<leader>fr", function() mini_extra.pickers.oldfiles() end )
+  vim.keymap.set("n", "<leader>fg", function() picker.builtin.grep_live() end )
+  vim.keymap.set("n", "<leader>fb", function() picker.builtin.buffers() end )
+
+  -- cursorword
+  require('mini.cursorword').setup()
+
+  -- trailspace
+  require('mini.trailspace').setup()
+
+  -- notifications
+  local notify = require('mini.notify')
+  notify.setup()
+  vim.notify = notify.make_notify()
+
+  -- indent guide
+  local indentscope = require('mini.indentscope')
+  indentscope.setup()
+  indentscope.gen_animation.none()
+
+  -- text highlighting
+  local hipatterns = require('mini.hipatterns')
+  hipatterns.setup({
+    highlighters = {
+      fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+      hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
+      todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
+      note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
+      hex_color = hipatterns.gen_highlighter.hex_color(),
+    },
+  })
+
 end)
