@@ -3,6 +3,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 later(function()
   -- utils
   add('nvim-lua/plenary.nvim')
+  add('mini.nvim')
 
   -- treesitter
   add('nvim-treesitter/nvim-treesitter')

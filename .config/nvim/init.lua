@@ -18,6 +18,7 @@ end
 local opt = vim.opt
 vim.g.mapleader = ' ' -- Set <space> as the leader key
 vim.g.maplocalleader = ' '
+opt.mouse = "" -- disable mouse
 opt.guifont = { "BerkeleyMono Nerd Font:h10" }
 opt.foldenable = false
 opt.autowrite = true -- Enable auto write
@@ -33,8 +34,6 @@ opt.ignorecase = true -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.laststatus = 3 -- global statusline
 opt.number = true -- Print line number
-opt.pumblend = 10 -- Popup blend
-opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
 opt.scrolloff = 4 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
