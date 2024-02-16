@@ -4,6 +4,7 @@ local version = vim.version()
 now(function()
   -- tabs
   require('mini.tabline').setup()
+  require('mini.files').setup()
 
   ----------------------------------------------------------------------------------------------------------------
   -- start screen

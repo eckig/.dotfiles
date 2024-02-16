@@ -7,6 +7,7 @@ now(function()
     integrations = {
       treesitter = true,
       gitsigns = true,
+      treesitter_context = true,
       mini = {
         enabled = true,
       },

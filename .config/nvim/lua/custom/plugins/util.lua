@@ -17,6 +17,11 @@ later(function()
       additional_vim_regex_highlighting = false
     },
   }
+  add('nvim-treesitter/nvim-treesitter-context')
+  require('treesitter-context').setup({
+    mode = "cursor",
+    max_lines = 3
+  })
 
   -- git status
   add('lewis6991/gitsigns.nvim')
@@ -34,14 +39,6 @@ later(function()
   -- search/replace
   add('nvim-pack/nvim-spectre')
   vim.keymap.set("n", "<leader>sr", function() require("spectre").open() end )
-
-  -- directory listing
-  add('stevearc/oil.nvim')
-  require("oil").setup({
-    view_options = {
-      show_hidden = true
-    }
-  })
 
   -- sudo
   add('lambdalisue/suda.vim')
