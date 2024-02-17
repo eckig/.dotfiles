@@ -14,13 +14,7 @@ now(function()
     },
   })
   vim.cmd.colorscheme "catppuccin-latte"
-end)
 
-now(function()
-  add('nvim-tree/nvim-web-devicons')
-end)
-
-now(function()
   add('nvim-tree/nvim-web-devicons')
 end)
 
