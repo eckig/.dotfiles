@@ -3,7 +3,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 now(function()
   add('catppuccin/nvim')
   require("catppuccin").setup({
-    transparent_background = true,
+    transparent_background = vim.fn.has('gui_running') ~= 1,
     integrations = {
       treesitter = true,
       gitsigns = true,
@@ -13,7 +13,7 @@ now(function()
       },
     },
   })
-  vim.cmd.colorscheme "catppuccin-latte"
+  vim.cmd.colorscheme "catppuccin-mocha"
 
   add('nvim-tree/nvim-web-devicons')
 end)
