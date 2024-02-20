@@ -10,18 +10,53 @@ later(function()
   require('nvim-treesitter.configs').setup {
     ensure_installed = {
       'c', 'lua', 'javascript', 'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown',
-      'markdown_inline', 'json', 'css', 'html', 'yaml',
+      'markdown_inline', 'json', 'css', 'html', 'yaml', 'xml'
     },
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false
     },
   }
-  add('nvim-treesitter/nvim-treesitter-context')
-  require('treesitter-context').setup({
-    mode = "cursor",
-    max_lines = 3
-  })
+  add('JoosepAlviste/nvim-ts-context-commentstring')
+
+
+  -- status column
+  add('luukvbaal/statuscol.nvim')
+  local sc_builtin = require('statuscol.builtin')
+  require('statuscol').setup {
+    relculright = true,
+    segments = {
+      {
+        sign = {
+          name = { ".*" },
+          namespace = { ".*" },
+          maxwidth = 1,
+          colwidth = 2,
+          auto = false,
+          wrap = true,
+        },
+      },
+      {
+        text = { sc_builtin.lnumfunc, " " },
+        colwidth = 1,
+      },
+      {
+        sign = {
+          name = { "GitSigns*" },
+          namespace = { "gitsigns" },
+          colwidth = 1,
+          fillchar = '▎',
+          fillcharhl = "Nrline"
+        },
+      },
+      {
+        text = { sc_builtin.foldfunc, " " },
+        hl = "FoldColumn",
+        wrap = true,
+        colwidth = 1,
+      },
+    },
+  }
 
   -- git status
   add('lewis6991/gitsigns.nvim')
