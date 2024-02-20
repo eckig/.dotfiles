@@ -74,8 +74,4 @@ later(function()
   -- search/replace
   add('nvim-pack/nvim-spectre')
   vim.keymap.set("n", "<leader>sr", function() require("spectre").open() end )
-
-  -- sudo
-  add('lambdalisue/suda.vim')
-  vim.g.suda_smart_edit = 1
 end)
