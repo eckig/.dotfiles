@@ -78,7 +78,7 @@ later(function()
           name = { "GitSigns*" },
           namespace = { "gitsigns" },
           colwidth = 1,
-          fillchar = git_sign_icon,
+          fillchar = ' ',
           fillcharhl = "Nrline"
         },
       },

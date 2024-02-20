@@ -22,7 +22,7 @@ set timeoutlen=5000         " increase the timeoutlen (default: 1000)
 set number relativenumber  " relative line numbers
 
 " keybindings
-map <leader>c <action>(CommentByLineComment)
+map gc <action>(CommentByLineComment)
 map <leader>ff <action>(GotoClass)
 map <leader>fc <action>(FindInPath)
 map <leader>fu <action>(FindUsages)

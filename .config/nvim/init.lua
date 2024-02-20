@@ -81,8 +81,8 @@ if not vim.loop.fs_stat(mini_path) then
   vim.cmd('packadd mini.nvim | helptags ALL')
 end
 require('mini.deps').setup({ path = { package = path_package } })
-require('custom/plugins/mini')
 require('custom/plugins/util')
+require('custom/plugins/mini')
 
 -- Keymap
 local map = vim.keymap.set

@@ -77,22 +77,21 @@ now(function()
     return string.format('%s %s %s', string.upper(encoding), format, size)
   end
 
-  local set_cust_hl = function(name, data)
+  local set_cust_hl = function(name)
     local color_bg = vim.api.nvim_get_hl(0, {name = name})
     local rev_name = 'rev_' .. name
     vim.api.nvim_set_hl(0, rev_name, { fg = color_bg.bg })
   end
+  set_cust_hl('MiniStatuslineModeNormal')
+  set_cust_hl('MiniStatuslineModeInsert')
+  set_cust_hl('MiniStatuslineModeVisual')
+  set_cust_hl('MiniStatuslineModeReplace')
+  set_cust_hl('MiniStatuslineModeCommand')
+  set_cust_hl('MiniStatuslineModeOther')
+  set_cust_hl('MiniStatuslineDevinfo')
 
   local separator_right  = ''
   local separator_left = ''
-
-  set_cust_hl('MiniStatuslineModeNormal',  { link = 'Cursor' })
-  set_cust_hl('MiniStatuslineModeInsert',  { link = 'DiffChange' })
-  set_cust_hl('MiniStatuslineModeVisual',  { link = 'DiffAdd' })
-  set_cust_hl('MiniStatuslineModeReplace', { link = 'DiffDelete' })
-  set_cust_hl('MiniStatuslineModeCommand', { link = 'DiffText' })
-  set_cust_hl('MiniStatuslineModeOther',   { link = 'IncSearch' })
-  set_cust_hl('MiniStatuslineDevinfo',     { link = 'StatusLine' })
 
   local disable_statusline = function(data) vim.b[data.buf].ministatusline_disable = true end
   vim.api.nvim_create_autocmd('User', { pattern = 'MiniStarterOpened', callback = disable_statusline })
