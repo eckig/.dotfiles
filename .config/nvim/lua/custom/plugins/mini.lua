@@ -1,7 +1,10 @@
-local now, later = MiniDeps.now, MiniDeps.later
+local now, later, add = MiniDeps.now, MiniDeps.later, MiniDeps.add
 local version = vim.version()
 
 now(function()
+  -- add mini.nvim to session
+  add('mini.nvim')
+
   -- tabs
   require('mini.tabline').setup()
 
