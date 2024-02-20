@@ -1,4 +1,5 @@
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local git_sign_icon = '▎'
 
 later(function()
   -- utils
@@ -18,7 +19,6 @@ later(function()
     },
   }
   add('JoosepAlviste/nvim-ts-context-commentstring')
-
 
   -- status column
   add('luukvbaal/statuscol.nvim')
@@ -45,7 +45,7 @@ later(function()
           name = { "GitSigns*" },
           namespace = { "gitsigns" },
           colwidth = 1,
-          fillchar = '▎',
+          fillchar = git_sign_icon,
           fillcharhl = "Nrline"
         },
       },
@@ -62,12 +62,12 @@ later(function()
   add('lewis6991/gitsigns.nvim')
   require('gitsigns').setup({
     signs = {
-      add = { text = "▎" },
-      change = { text = "▎" },
-      delete = { text = "" },
-      topdelete = { text = "" },
-      changedelete = { text = "▎" },
-      untracked = { text = "▎" },
+      add = { text = git_sign_icon },
+      change = { text = git_sign_icon },
+      delete = { text = git_sign_icon },
+      topdelete = { text = git_sign_icon },
+      changedelete = { text = git_sign_icon },
+      untracked = { text = git_sign_icon },
     },
   })
 
