@@ -2,7 +2,7 @@ local now, later, add = MiniDeps.now, MiniDeps.later, MiniDeps.add
 local version = vim.version()
 
 now(function()
-  -- add mini.nvim to session
+  -- add self to session
   add('mini.nvim')
 
   -- tabs
@@ -175,9 +175,9 @@ later(function()
   vim.notify = notify.make_notify()
 
   -- indent guide
-  local indentscope = require('mini.indentscope')
-  indentscope.setup()
-  indentscope.gen_animation.none()
+  -- local indentscope = require('mini.indentscope')
+  -- indentscope.setup()
+  -- indentscope.gen_animation.none()
 
   -- text highlighting
   local hipatterns = require('mini.hipatterns')

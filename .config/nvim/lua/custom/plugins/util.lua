@@ -1,5 +1,4 @@
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
-local git_sign_icon = '▎'
 
 now(function()
   add('catppuccin/nvim')
@@ -8,7 +7,6 @@ now(function()
     integrations = {
       treesitter = true,
       gitsigns = true,
-      treesitter_context = true,
       mini = {
         enabled = true,
       },
@@ -40,24 +38,31 @@ later(function()
   add('nvim-lua/plenary.nvim')
 
   -- treesitter
-  add('nvim-treesitter/nvim-treesitter')
+  add({
+    source = 'nvim-treesitter/nvim-treesitter',
+    hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+    depends = {
+      'JoosepAlviste/nvim-ts-context-commentstring'
+    },
+  })
   require('nvim-treesitter.configs').setup {
     ensure_installed = {
       'c', 'lua', 'javascript', 'vimdoc', 'vim', 'bash', 'java', 'regex', 'markdown',
       'markdown_inline', 'json', 'css', 'html', 'yaml', 'xml'
     },
+    auto_install = true,
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false
     },
   }
-  add('JoosepAlviste/nvim-ts-context-commentstring')
 
   -- status column
   add('luukvbaal/statuscol.nvim')
   local sc_builtin = require('statuscol.builtin')
   require('statuscol').setup {
     relculright = true,
+    foldfunc = "builtin",
     segments = {
       {
         sign = {
@@ -92,6 +97,7 @@ later(function()
   }
 
   -- git status
+  local git_sign_icon = '▎'
   add('lewis6991/gitsigns.nvim')
   require('gitsigns').setup({
     signs = {

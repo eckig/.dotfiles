@@ -53,7 +53,8 @@ nnoremap % %zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-nnoremap ge :action GotoNextError<CR>
+
+nnoremap ge :action GotoNextError<CR>zz
 nnoremap gE :action GotoPreviousError<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gD :action GotToDeclaration<CR>
