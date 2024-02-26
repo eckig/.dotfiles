@@ -18,22 +18,6 @@ now(function()
 end)
 
 later(function()
-  -- autocomplete
-  add('hrsh7th/nvim-cmp')
-  add('hrsh7th/cmp-cmdline')
-  local cmp = require'cmp'
-  cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({ { name = 'path' } }, {
-      {
-        name = 'cmdline',
-        option = {
-          ignore_cmds = { 'Man', '!' }
-        }
-      }
-    })
-  })
-
   -- utils
   add('nvim-lua/plenary.nvim')
 
@@ -113,11 +97,4 @@ later(function()
   -- search/replace
   add('nvim-pack/nvim-spectre')
   vim.keymap.set("n", "<leader>sr", function() require("spectre").open() end )
-
-  -- substitute
-  add('gbprod/substitute.nvim')
-  vim.keymap.set("n", "s", require('substitute').operator, { noremap = true })
-  vim.keymap.set("n", "ss", require('substitute').line, { noremap = true })
-  vim.keymap.set("n", "S", require('substitute').eol, { noremap = true })
-  vim.keymap.set("x", "s", require('substitute').visual, { noremap = true })
 end)
