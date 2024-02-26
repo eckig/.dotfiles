@@ -18,12 +18,21 @@ now(function()
   local version_desc = string.format(' %s.%s.%s', version.major, version.minor, version.patch)
   starter.setup({
     header = [[
-███╗   ██╗ ███████╗  ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
-████╗  ██║ ██╔════╝ ██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
-██╔██╗ ██║ █████╗   ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
-██║╚██╗██║ ██╔══╝   ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
-██║ ╚████║ ███████╗ ╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
-╚═╝  ╚═══╝ ╚══════╝  ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]] .. version_desc,
+      ,l;             c,
+   .:ooool'           loo:.
+ .,oooooooo:.         looooc,
+ll:,loooooool,        looooool
+llll,;ooooooooc.      looooooo
+lllllc,coooooooo;     looooooo
+lllllll;,loooooool'   looooooo
+lllllllc .:oooooooo:. looooooo
+lllllllc   'loooooool,:ooooooo
+lllllllc     ;ooooooooc,cooooo
+lllllllc      .coooooooo;;looo
+lllllllc        ,loooooool,:ol
+ 'cllllc         .:oooooooo;.
+   .;llc           .loooo:.
+      ,;             ;l;      ]] .. version_desc,
     items = {
       starter.sections.recent_files(10, false, false),
       { name = 'Find & Replace', action = 'lua require("spectre").open()', section = 'Search' },
@@ -90,9 +99,6 @@ now(function()
   set_cust_hl('MiniStatuslineModeOther')
   set_cust_hl('MiniStatuslineDevinfo')
 
-  local separator_right  = ''
-  local separator_left = ''
-
   local disable_statusline = function(data) vim.b[data.buf].ministatusline_disable = true end
   vim.api.nvim_create_autocmd('User', { pattern = 'MiniStarterOpened', callback = disable_statusline })
 
@@ -100,35 +106,26 @@ now(function()
     content = {
       active = function()
         local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+        local rev_mode_hl   = 'rev_' .. mode_hl
         local git           = MiniStatusline.section_git({ trunc_width = 120 })
         local fileinfo      = min_section_fileinfo()
-        local filename      = MiniStatusline.section_filename({ trunc_width = 140 })
+        local filename      = '%t'
         local location      = '%p%%'
         local search        = MiniStatusline.section_searchcount({ trunc_width = 120 })
-
-        local git_separator_left, git_separator_right
-        if git == '' then
-          git_separator_left  = ''
-          git_separator_right = ''
-        else
-          git_separator_left  = separator_left
-          git_separator_right = separator_right
-        end
+        local separator_right = ''
+        local separator_left  = ''
 
         return MiniStatusline.combine_groups({
+          { hl = rev_mode_hl },
+          separator_left,
           { hl = mode_hl, strings = { string.upper(mode) } },
-          { hl = 'rev_' .. mode_hl },
+          { hl = rev_mode_hl },
           separator_right,
-
-          { hl = 'rev_MiniStatuslineDevinfo' },
-          git_separator_left,
-          { hl = 'MiniStatuslineDevinfo', strings = { git } },
-          { hl = 'rev_MiniStatuslineDevinfo' },
-          git_separator_right,
+          ' ',
 
           { hl = 'rev_MiniStatuslineDevinfo' },
           separator_left,
-          { hl = 'MiniStatuslineDevinfo', strings = { get_filetype_icon() .. ' ' .. filename } },
+          { hl = 'MiniStatuslineDevinfo', strings = { git, get_filetype_icon() .. ' ' .. filename  } },
           { hl = 'rev_MiniStatuslineDevinfo' },
           separator_right,
 
@@ -139,10 +136,13 @@ now(function()
           { hl = 'MiniStatuslineDevinfo', strings = { fileinfo } },
           { hl = 'rev_MiniStatuslineDevinfo' },
           separator_right,
+          ' ',
 
-          { hl = 'rev_' .. mode_hl },
+          { hl = rev_mode_hl },
           separator_left,
           { hl = mode_hl, strings = { search, location } },
+          { hl = rev_mode_hl },
+          separator_right,
         })
       end,
       inactive = nil,
@@ -173,11 +173,6 @@ later(function()
   local notify = require('mini.notify')
   notify.setup()
   vim.notify = notify.make_notify()
-
-  -- indent guide
-  -- local indentscope = require('mini.indentscope')
-  -- indentscope.setup()
-  -- indentscope.gen_animation.none()
 
   -- text highlighting
   local hipatterns = require('mini.hipatterns')
