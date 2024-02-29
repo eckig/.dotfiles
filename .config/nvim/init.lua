@@ -18,7 +18,7 @@ end
 local opt = vim.opt
 vim.g.mapleader = ' ' -- Set <space> as the leader key
 vim.g.maplocalleader = ' '
-opt.mouse = "" -- disable mouse
+opt.mouse = "a"
 opt.guifont = { "BerkeleyMono Nerd Font:h11" }
 opt.foldenable = false
 opt.autowrite = true -- Enable auto write
@@ -97,6 +97,7 @@ map("n", "<c-u>", "<c-u>zz")
 map("n", "%", "%z")
 map("n", "n", "nzzz")
 map("n", "N", "Nzzz")
+map("n", "<esc>", "<esc>:noh<cr>")
 
 -- Only yank deleted line if not empty
 local function smartdd()

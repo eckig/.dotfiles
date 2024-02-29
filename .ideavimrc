@@ -40,8 +40,8 @@ map <leader>ww <action>(SurroundWith)
 map <leader>xx <action>(EvaluateExpression)
 
 " buffer switch
-nnoremap <silent> H :bprevious<CR>
-nnoremap <silent> L :bnext<CR>
+map <silent> H :bprevious<CR>
+map <silent> L :bnext<CR>
 
 " Easy visual indentation
 vnoremap < <gv
@@ -53,6 +53,8 @@ nnoremap % %zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
+" cancel search on ESC
+nnoremap <esc> <esc>:noh<cr>
 
 nnoremap ge :action GotoNextError<CR>zz
 nnoremap gE :action GotoPreviousError<CR>
