@@ -34,15 +34,16 @@ lllllllc        ,loooooool,:ol
    .;llc           .loooo:.
       ,;             ;l;      ]] .. version_desc,
     items = {
-      starter.sections.recent_files(10, false, false),
-      { name = 'Find & Replace', action = 'lua require("spectre").open()', section = 'Search' },
-      { name = 'Update Plugins', action = 'DepsUpdate', section = 'Plugins' },
-      { name = 'Clean Plugins', action = 'DepsClean', section = 'Plugins' },
+      { name = 'Update Plugins', action = 'DepsUpdate', section = '' },
+      { name = 'Clean Plugins', action = 'DepsClean', section = '' },
+      { name = 'New buffer', action = 'enew', section = '' },
+      { name = 'Quit', action = 'qall', section = '' },
     },
     content_hooks = {
-      starter.gen_hook.adding_bullet("[] "),
+      starter.gen_hook.adding_bullet("> "),
       starter.gen_hook.aligning('center', 'center'),
     },
+    footer = '',
   })
 
 

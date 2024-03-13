@@ -93,8 +93,4 @@ later(function()
       untracked = { text = git_sign_icon },
     },
   })
-
-  -- search/replace
-  add('nvim-pack/nvim-spectre')
-  vim.keymap.set("n", "<leader>sr", function() require("spectre").open() end )
 end)

@@ -40,8 +40,8 @@ map <leader>ww <action>(SurroundWith)
 map <leader>xx <action>(EvaluateExpression)
 
 " buffer switch
-map <silent> H :bprevious<CR>
-map <silent> L :bnext<CR>
+map <silent> H gT<CR>
+map <silent> L gt<CR>
 
 " Easy visual indentation
 vnoremap < <gv
@@ -62,6 +62,7 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gD :action GotToDeclaration<CR>
 nnoremap gs :action GotToSuperMethod<CR>
 nnoremap gr :action RecentFiles<CR>
+nnoremap gg :action FileStructurePopup<CR>
 
 nnoremap ,r :action ContextRun<CR>
 nnoremap ,c :action RunClass<CR>
