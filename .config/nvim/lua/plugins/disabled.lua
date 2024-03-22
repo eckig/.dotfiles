@@ -1,0 +1,16 @@
+return {
+  { "folke/flash.nvim", enabled = false },
+  { "folke/tokyonight.nvim", enabled = false },
+  { "nvimdev/dashboard-nvim", enabled = false },
+  { "dstein64/vim-startuptime", enabled = false },
+  { "folke/persistence.nvim", enabled = false },
+  { "lukas-reineke/indent-blankline.nvim", enabled = false },
+  { "echasnovski/mini.indentscope", enabled = false },
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+  { "echasnovski/mini.bufremove", enabled = false },
+  { "echasnovski/mini.surround", enabled = false },
+  { "echasnovski/mini.ai", enabled = false },
+  { "echasnovski/mini.pairs", enabled = false },
+  { "nvim-treesitter/nvim-treesitter-context", enabled = false },
+  { "hrsh7th/cmp-buffer", enabled = false },
+}
