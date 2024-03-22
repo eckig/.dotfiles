@@ -22,17 +22,13 @@ set timeoutlen=5000         " increase the timeoutlen (default: 1000)
 set number relativenumber  " relative line numbers
 
 " keybindings
-map gc <action>(CommentByLineComment)
 map <leader>ff <action>(GotoClass)
 map <leader>fc <action>(FindInPath)
 map <leader>fu <action>(FindUsages)
 map <leader>fg <action>(Compare.LastVersion)
 map <leader>fh <action>(CallHierarchy)
-map <leader>h  <action>(ShowErrorDescription)
-map <leader>u  <action>(CodeCompletion)
 map <leader>k  <action>(ShowIntentionActions)
 map <leader>s  <action>(FileStructurePopup)
-map qq         <action>(CloseContent)
 map <leader>r  <action>(Refactorings.QuickListPopupAction)
 map <leader>i  <action>(Generate)
 map <leader>vv <action>(IntroduceVariable)
@@ -50,11 +46,16 @@ vnoremap > >gv
 nnoremap <c-d> <c-d>zz
 nnoremap <c-u> <c-u>zz
 nnoremap % %zz
-nnoremap n nzzzv
-nnoremap N Nzzzv
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap { {zz
+nnoremap } }zz
 
 " cancel search on ESC
 nnoremap <esc> <esc>:noh<cr>
+
+map gc <action>(CommentByLineComment)
+map qq <action>(CloseContent)
 
 nnoremap ge :action GotoNextError<CR>zz
 nnoremap gE :action GotoPreviousError<CR>
@@ -62,10 +63,7 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gD :action GotToDeclaration<CR>
 nnoremap gs :action GotToSuperMethod<CR>
 nnoremap gr :action RecentFiles<CR>
-nnoremap gg :action FileStructurePopup<CR>
 
-nnoremap ,r :action ContextRun<CR>
-nnoremap ,c :action RunClass<CR>
 nnoremap ,u :action Rerun<CR>
 nnoremap ,f :action RerunFailedTests<CR>
 nnoremap ,b :action ToggleLineBreakpoint<CR>
