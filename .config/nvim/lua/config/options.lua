@@ -14,13 +14,15 @@ if vim.fn.has("wsl") == 1 then
   }
 end
 
+if vim.fn.has("gui_running") == 1 then
+  vim.opt.guifont = { "BerkeleyMono Nerd Font:h10" }
+end
+
 -- Options
 local opt = vim.opt
 vim.g.mapleader = " " -- Set <space> as the leader key
 vim.g.maplocalleader = " "
-vim.g.have_nerd_font = true
 opt.mouse = "a"
-opt.guifont = { "BerkeleyMono Nerd Font:h10" }
 opt.foldenable = false
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -71,4 +73,5 @@ opt.fillchars = {
   diff = "╱",
   eob = " ",
 }
+vim.o.showtabline = 2
 -- vim.lsp.set_log_level("debug")

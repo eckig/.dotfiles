@@ -7,10 +7,12 @@ return {
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
   { "echasnovski/mini.indentscope", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
-  { "echasnovski/mini.bufremove", enabled = false },
   { "echasnovski/mini.surround", enabled = false },
   { "echasnovski/mini.ai", enabled = false },
   { "echasnovski/mini.pairs", enabled = false },
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
   { "hrsh7th/cmp-buffer", enabled = false },
+  { "akinsho/bufferline.nvim", enabled = false },
+  { "nvim-lualine/lualine.nvim", enabled = false },
+  { "nvim-pack/nvim-spectre", enabled = false },
 }

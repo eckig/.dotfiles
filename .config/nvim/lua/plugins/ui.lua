@@ -4,7 +4,8 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
-      transparent_background = vim.fn.has("gui_running") ~= 1,
+      transparent_background = false,
+      -- transparent_background = vim.fn.has("gui_running") ~= 1,
       integrations = {
         treesitter = true,
         gitsigns = true,
@@ -22,17 +23,6 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "catppuccin-mocha",
-    },
-  },
-
-  {
-    "akinsho/bufferline.nvim",
-    opts = {
-      options = {
-        diagnostics = "",
-        always_show_bufferline = true,
-        show_buffer_close_icons = false,
-      },
     },
   },
 }
