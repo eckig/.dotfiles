@@ -4,8 +4,7 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
-      transparent_background = false,
-      -- transparent_background = vim.fn.has("gui_running") ~= 1,
+      transparent_background = vim.fn.has("gui_running") ~= 1,
       integrations = {
         treesitter = true,
         gitsigns = true,

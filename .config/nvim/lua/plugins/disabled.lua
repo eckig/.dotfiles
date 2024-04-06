@@ -15,4 +15,8 @@ return {
   { "akinsho/bufferline.nvim", enabled = false },
   { "nvim-lualine/lualine.nvim", enabled = false },
   { "nvim-pack/nvim-spectre", enabled = false },
+  { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
+  { "L3MON4D3/LuaSnip", enabled = false },
+  { "rafamadriz/friendly-snippets", enabled = false },
+  { "saadparwaiz1/cmp_luasnip", enabled = false },
 }

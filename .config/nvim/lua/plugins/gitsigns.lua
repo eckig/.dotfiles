@@ -12,6 +12,5 @@ return {
         untracked = { text = git_sign_icon },
       },
     },
-    on_attach = function() end,
   },
 }
