@@ -52,7 +52,10 @@ local FileFormat = {
 
 return {
   "rebelot/heirline.nvim",
-  dependencies = { "Zeioth/heirline-components.nvim" },
+  dependencies = {
+    "Zeioth/heirline-components.nvim",
+    "nvim-tree/nvim-web-devicons",
+  },
   opts = function()
     local lib = require("heirline-components.all")
     return {
