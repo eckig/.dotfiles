@@ -1,21 +1,39 @@
 local WorkDir = {
+  static = {
+    root_patterns = { ".git", "lua" },
+  },
+  condition = function(self)
+    self.root = require('mini.misc').find_root(0, self.root_patterns)
+    return self.root ~= nil
+  end,
+  update = { "BufEnter" },
   {
-    provider = function()
-      local cwd = LazyVim.root.cwd()
-      local root = LazyVim.root.get({ normalize = true })
-      local name = "󱉭 " .. vim.fs.basename(root)
-
-      if root:find(cwd, 1, true) == 1 then
-        return name
-      elseif cwd:find(root, 1, true) == 1 then
-        return name
-      else
-        return name
-      end
+    provider = function(self)
+      return "󱉭 " .. vim.fn.fnamemodify(vim.fs.normalize(self.root), ":t")
     end,
   },
   {
+    provider = "   ",
+  },
+}
+
+local FileSize = {
+  condition = function() return vim.fn.getfsize(vim.api.nvim_buf_get_name(0)) > 0 end,
+  {
     provider = " ",
+  },
+  {
+    provider = function()
+        -- stackoverflow, compute human readable file size
+        local suffix = { 'b', 'k', 'M', 'G', 'T', 'P', 'E' }
+        local fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
+        fsize = (fsize < 0 and 0) or fsize
+        if fsize < 1024 then
+            return fsize..suffix[1]
+        end
+        local i = math.floor((math.log(fsize) / math.log(1024)))
+        return string.format("%.2g%s", fsize / math.pow(1024, i), suffix[i + 1])
+    end
   },
 }
 
@@ -40,7 +58,7 @@ local FileFormat = {
     },
   },
   {
-    provider = "  ",
+    provider = "   ",
   },
   {
     provider = function(self)
@@ -52,9 +70,11 @@ local FileFormat = {
 
 return {
   "rebelot/heirline.nvim",
+  event = "VeryLazy",
   dependencies = {
     "Zeioth/heirline-components.nvim",
     "nvim-tree/nvim-web-devicons",
+    "echasnovski/mini.misc",
   },
   opts = function()
     local lib = require("heirline-components.all")
@@ -76,8 +96,8 @@ return {
       statusline = {
         hl = { fg = "fg", bg = "bg" },
         lib.component.mode(),
-        lib.component.git_branch(),
         WorkDir,
+        lib.component.git_branch(),
         lib.component.file_info(),
         lib.component.git_diff(),
         lib.component.diagnostics(),
@@ -87,6 +107,7 @@ return {
         lib.component.lsp(),
         FileFormat,
         FileEncoding,
+        FileSize,
         lib.component.nav(),
         lib.component.mode({ surround = { separator = "right" } }),
       },
