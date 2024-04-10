@@ -45,6 +45,7 @@ vnoremap > >gv
 
 nnoremap <c-d> <c-d>zz
 nnoremap <c-u> <c-u>zz
+nnoremap <c-o> <c-o>zz
 nnoremap % %zz
 nnoremap n nzz
 nnoremap N Nzz
@@ -54,8 +55,10 @@ nnoremap } }zz
 " cancel search on ESC
 nnoremap <esc> <esc>:noh<cr>
 
-map gc <action>(CommentByLineComment)
-map qq <action>(CloseContent)
+map gc :action CommentByLineComment<CR>
+map qq :action CloseContent<CR>
+map J  :action MoveLineDown<CR>
+map K  :action MoveLineUp<CR>
 
 nnoremap ge :action GotoNextError<CR>zz
 nnoremap gE :action GotoPreviousError<CR>
