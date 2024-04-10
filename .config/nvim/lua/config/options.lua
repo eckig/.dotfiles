@@ -22,6 +22,7 @@ end
 local opt = vim.opt
 vim.g.mapleader = " " -- Set <space> as the leader key
 vim.g.maplocalleader = " "
+vim.g.big_file = { size = 1024 * 500, lines = 10000 }
 opt.mouse = "a"
 opt.foldenable = false
 opt.autowrite = true -- Enable auto write
@@ -60,11 +61,11 @@ opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
--- opt.foldmethod = 'expr'
--- opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
--- opt.foldenable = true
--- opt.foldlevelstart = 99
--- opt.foldcolumn = '1'
+opt.foldmethod = 'expr'
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldenable = true
+opt.foldlevelstart = 99
+opt.foldcolumn = '1'
 opt.fillchars = {
   foldopen = "",
   foldclose = "",
@@ -74,4 +75,5 @@ opt.fillchars = {
   eob = " ",
 }
 vim.o.showtabline = 2
+vim.wo.signcolumn = "yes"
 -- vim.lsp.set_log_level("debug")

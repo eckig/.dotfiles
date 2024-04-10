@@ -2,6 +2,7 @@ local git_sign_icon = "▎"
 return {
   {
     "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
     opts = {
       signs = {
         add = { text = git_sign_icon },

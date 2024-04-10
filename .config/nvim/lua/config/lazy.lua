@@ -12,19 +12,11 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-  spec = {
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    { import = "lazyvim.plugins.extras.lang.java" },
-    { import = "lazyvim.plugins.extras.dap.core" },
-    { import = "plugins" },
-  },
-  defaults = {
-    lazy = false,
-    version = false, -- always use the latest git commit
-    keymaps = false,
-  },
+  spec = { { import = "plugins" } },
   install = {},
-  checker = { enabled = false }, -- automatically check for plugin updates
+  change_detection = { enabled = false },
+  checker = { enabled = false },
+  readme = { enabled = false },
   performance = {
     rtp = {
       disabled_plugins = {

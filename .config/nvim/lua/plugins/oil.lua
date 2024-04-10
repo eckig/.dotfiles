@@ -13,7 +13,7 @@ return {
       {
         "<leader>fd",
         function()
-          require("oil").open_float(LazyVim.root())
+          require("oil").open_float(vim.fn.expand('%:p:h'))
         end,
       },
     },

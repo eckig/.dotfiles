@@ -70,7 +70,6 @@ local FileFormat = {
 
 return {
   "rebelot/heirline.nvim",
-  event = "VeryLazy",
   dependencies = {
     "Zeioth/heirline-components.nvim",
     "nvim-tree/nvim-web-devicons",
@@ -89,9 +88,9 @@ return {
         init = function(self)
           self.bufnr = vim.api.nvim_get_current_buf()
         end,
-        lib.component.foldcolumn(),
+        lib.component.foldcolumn({ condition=function() return true end, }),
         lib.component.numbercolumn(),
-        lib.component.signcolumn(),
+        lib.component.signcolumn({ condition=function() return true end, }),
       } or nil,
       statusline = {
         hl = { fg = "fg", bg = "bg" },
@@ -108,7 +107,7 @@ return {
         FileFormat,
         FileEncoding,
         FileSize,
-        lib.component.nav(),
+        lib.component.nav({ scrollbar = false, }),
         lib.component.mode({ surround = { separator = "right" } }),
       },
     }
