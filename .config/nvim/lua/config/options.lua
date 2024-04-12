@@ -14,6 +14,11 @@ if vim.fn.has("wsl") == 1 then
   }
 end
 
+if vim.fn.executable('rg') == 1 then
+  vim.opt.grepprg = "rg --vimgrep"
+  vim.opt.grepformat = "%f:%l:%c:%m"
+end
+
 if vim.fn.has("gui_running") == 1 then
   vim.opt.guifont = { "BerkeleyMono Nerd Font:h10" }
 end

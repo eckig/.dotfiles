@@ -7,6 +7,13 @@ vim.api.nvim_create_autocmd({ "WinLeave", "FocusLost" }, {
   command = "setlocal number norelativenumber",
 })
 
+-- always open quickfix window automatically.
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+  group = vim.api.nvim_create_augroup("AutoOpenQuickfix", { clear = true }),
+  pattern = { "[^l]*" },
+  command = "cwindow"
+})
+
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   callback = function()
@@ -62,6 +69,20 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.properties"  },
+  callback = function(event)
+    vim.cmd(":set noignorecase")
+    vim.cmd(":%s/ä/\\\\u00E4/ge")
+    vim.cmd(":%s/Ä/\\\\u00C4/ge")
+    vim.cmd(":%s/ö/\\\\u00D6/ge")
+    vim.cmd(":%s/Ö/\\\\u00F6/ge")
+    vim.cmd(":%s/ü/\\\\u00FC/ge")
+    vim.cmd(":%s/Ü/\\\\u00DC/ge")
+    vim.cmd(":%s/ß/\\\\u00DF/ge")
   end,
 })
 

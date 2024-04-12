@@ -2,15 +2,33 @@ return {
   {
     'echasnovski/mini.cursorword',
     event = "VeryLazy",
-    init = function()
+    config = function()
       require('mini.cursorword').setup()
+    end
+  },
+
+  {
+    'echasnovski/mini.align',
+    event = "BufEnter *.properties",
+    config = function()
+      local var align = require('mini.align')
+      align.setup({
+        options = {
+          split_pattern = '=',
+          justify_side = 'left',
+          merge_delimiter = ' ',
+        },
+        steps = {
+          pre_justify = { align.gen_step.trim() },
+        },
+      })
     end
   },
 
   {
     'echasnovski/mini.move',
     event = "VeryLazy",
-    init = function()
+    config = function()
       require('mini.move').setup({
         mappings = {
           left  = '',
@@ -25,7 +43,7 @@ return {
   {
     'echasnovski/mini.hipatterns',
     event = "VeryLazy",
-    init = function()
+    config = function()
       local hipatterns = require('mini.hipatterns')
       hipatterns.setup({
         highlighters = {
