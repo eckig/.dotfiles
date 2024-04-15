@@ -33,8 +33,8 @@ return {
         mappings = {
           left  = '',
           right = '',
-          down  = 'J',
-          up    = 'K',
+          down  = '<C-j>',
+          up    = '<C-k>',
         }
       })
     end,
