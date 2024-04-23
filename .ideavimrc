@@ -63,8 +63,8 @@ map <c-k> :action MoveLineUp<CR>
 nnoremap ge :action GotoNextError<CR>zz
 nnoremap gE :action GotoPreviousError<CR>
 nnoremap gi :action GotoImplementation<CR>
-nnoremap gD :action GotToDeclaration<CR>
-nnoremap gs :action GotToSuperMethod<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
 nnoremap gr :action RecentFiles<CR>
 
 nnoremap ,u :action Rerun<CR>
