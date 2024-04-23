@@ -1,20 +1,28 @@
 return {
+--   {
+--     "catppuccin/nvim",
+--     name = "catppuccin",
+--     priority = 1000,
+--     opts = {
+--       transparent_background = vim.fn.has("gui_running") ~= 1,
+--       integrations = {
+--         treesitter = true,
+--         gitsigns = true,
+--         notify = true,
+--         noice = true,
+--       },
+--     },
+--     config = function()
+--       vim.cmd.colorscheme "catppuccin-latte"
+--     end
+--   },
+
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "EdenEast/nightfox.nvim",
     priority = 1000,
-    opts = {
-      transparent_background = vim.fn.has("gui_running") ~= 1,
-      integrations = {
-        treesitter = true,
-        gitsigns = true,
-        notify = true,
-        noice = true,
-      },
-    },
     config = function()
-      vim.cmd.colorscheme "catppuccin-latte"
-    end
+      vim.cmd.colorscheme "dayfox"
+    end,
   },
 
   {
@@ -65,10 +73,6 @@ return {
           help = { conceal = false },
           input = { conceal = false },
         }
-      },
-      lsp = {
-        progress = { enabled = false },
-        -- message = { enabled = false },
       },
     },
   },

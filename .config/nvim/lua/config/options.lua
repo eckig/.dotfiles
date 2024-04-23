@@ -29,7 +29,6 @@ vim.g.mapleader = " " -- Set <space> as the leader key
 vim.g.maplocalleader = " "
 vim.g.big_file = { size = 1024 * 500, lines = 10000 }
 opt.mouse = "a"
-opt.foldenable = false
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
@@ -37,7 +36,7 @@ opt.conceallevel = 0
 opt.cmdheight = 0
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
-opt.cursorcolumn = true -- Enable highlighting of the current line
+opt.cursorcolumn = false -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
 opt.ignorecase = true -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute

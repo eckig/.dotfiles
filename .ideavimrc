@@ -23,7 +23,7 @@ set number relativenumber  " relative line numbers
 
 " keybindings
 map <leader>ff <action>(GotoClass)
-map <leader>fc <action>(FindInPath)
+map <leader>/  <action>(FindInPath)
 map <leader>fu <action>(FindUsages)
 map <leader>fg <action>(Compare.LastVersion)
 map <leader>fh <action>(CallHierarchy)

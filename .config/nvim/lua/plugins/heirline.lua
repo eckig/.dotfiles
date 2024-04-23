@@ -84,6 +84,18 @@ return {
         lib.component.fill({ hl = { bg = "tabline_bg" } }),
         lib.component.tabline_tabpages(),
       },
+      winbar = { -- UI breadcrumbs bar
+        init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
+        {
+          condition = function() return lib.condition.is_file() end,
+          {
+            lib.component.fill(),
+            lib.component.breadcrumbs(),
+            lib.component.fill(),
+            lib.component.aerial(),
+          }
+        },
+      },
       statuscolumn = {
         init = function(self)
           self.bufnr = vim.api.nvim_get_current_buf()
