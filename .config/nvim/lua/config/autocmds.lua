@@ -23,6 +23,19 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   end,
 })
 
+-- disable features on big files
+vim.api.nvim_create_autocmd("BufReadPre", {
+  callback = function(args)
+    local is_big_file = require('utils').is_big_file
+    local bigfile_detected = is_big_file(args.buf)
+    if bigfile_detected then
+      vim.cmd "syntax clear"
+      vim.opt_local.syntax = "OFF"
+      vim.opt_local.foldmethod = "manual"
+    end
+  end,
+})
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()

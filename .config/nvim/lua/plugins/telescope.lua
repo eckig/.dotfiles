@@ -6,6 +6,7 @@ return {
     config = function()
       require("telescope").setup({
         defaults = {
+          layout_strategy = "vertical",
           path_display = {
             filename_first = {
               reverse_directories = false
