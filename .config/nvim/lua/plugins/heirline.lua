@@ -18,15 +18,18 @@ local WorkDir = {
 }
 
 local FileSize = {
-  condition = function() return vim.fn.getfsize(vim.api.nvim_buf_get_name(0)) > 0 end,
+  condition = function(self)
+    self.fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0)) 
+    return self.fsize > 0
+  end,
   {
     provider = " ",
   },
   {
-    provider = function()
+    provider = function(self)
         -- stackoverflow, compute human readable file size
         local suffix = { 'b', 'k', 'M', 'G', 'T', 'P', 'E' }
-        local fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
+        local fsize = self.fsize
         fsize = (fsize < 0 and 0) or fsize
         if fsize < 1024 then
             return fsize..suffix[1]
@@ -83,18 +86,6 @@ return {
         lib.component.tabline_buffers(),
         lib.component.fill({ hl = { bg = "tabline_bg" } }),
         lib.component.tabline_tabpages(),
-      },
-      winbar = { -- UI breadcrumbs bar
-        init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
-        {
-          condition = function() return lib.condition.is_file() end,
-          {
-            lib.component.fill(),
-            lib.component.breadcrumbs(),
-            lib.component.fill(),
-            lib.component.aerial(),
-          }
-        },
       },
       statuscolumn = {
         init = function(self)

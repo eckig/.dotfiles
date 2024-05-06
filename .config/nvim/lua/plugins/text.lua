@@ -26,21 +26,6 @@ return {
   },
 
   {
-    'echasnovski/mini.move',
-    event = "VeryLazy",
-    config = function()
-      require('mini.move').setup({
-        mappings = {
-          left  = '',
-          right = '',
-          down  = '<C-j>',
-          up    = '<C-k>',
-        }
-      })
-    end,
-  },
-
-  {
     'echasnovski/mini.hipatterns',
     event = "VeryLazy",
     config = function()

@@ -14,14 +14,11 @@ return {
     version = false,
     build = ":TSUpdate",
     event = { "VeryLazy" },
-    dependencies = {
-      { "JoosepAlviste/nvim-ts-context-commentstring", },
-    },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     opts = {
       highlight = {
         enable = true,
-        disable = function(_, bufnr) return is_big_file(bufnr) end,
+        disable = function(_, bufnr) return utils.is_big_file(bufnr) end,
         additional_vim_regex_highlighting = false,
       },
       indent = { enable = true },
@@ -50,15 +47,6 @@ return {
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
-    end,
-  },
-
-  {
-    "echasnovski/mini.comment",
-    event = { "VeryLazy" },
-    init = function()
-      require('mini.comment').setup()
-      return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
     end,
   },
 }
