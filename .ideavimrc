@@ -44,8 +44,6 @@ vnoremap < <gv
 vnoremap > >gv
 
 nnoremap <c-d> <c-d>zz
-nnoremap <c-u> <c-u>zz
-nnoremap <c-o> <c-o>zz
 nnoremap % %zz
 nnoremap n nzz
 nnoremap N Nzz
@@ -59,6 +57,8 @@ map gc    :action CommentByLineComment<CR>
 map qq    :action CloseContent<CR>
 map <c-j> :action MoveLineDown<CR>
 map <c-k> :action MoveLineUp<CR>
+map <c-u> :action Forward<CR>
+map <c-o> :action Back<CR>
 
 nnoremap ge :action GotoNextError<CR>zz
 nnoremap gE :action GotoPreviousError<CR>
