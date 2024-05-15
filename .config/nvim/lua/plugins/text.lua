@@ -26,6 +26,14 @@ return {
   },
 
   {
+    'echasnovski/mini.trailspace',
+    event = "VeryLazy",
+    config = function()
+      require('mini.trailspace').setup()
+    end
+  },
+
+  {
     'echasnovski/mini.hipatterns',
     event = "VeryLazy",
     config = function()
