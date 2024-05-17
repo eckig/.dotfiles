@@ -17,29 +17,6 @@ local WorkDir = {
   },
 }
 
-local FileSize = {
-  condition = function(self)
-    self.fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0)) 
-    return self.fsize > 0
-  end,
-  {
-    provider = " ",
-  },
-  {
-    provider = function(self)
-        -- stackoverflow, compute human readable file size
-        local suffix = { 'b', 'k', 'M', 'G', 'T', 'P', 'E' }
-        local fsize = self.fsize
-        fsize = (fsize < 0 and 0) or fsize
-        if fsize < 1024 then
-            return fsize..suffix[1]
-        end
-        local i = math.floor((math.log(fsize) / math.log(1024)))
-        return string.format("%.2g%s", fsize / math.pow(1024, i), suffix[i + 1])
-    end
-  },
-}
-
 local FileEncoding = {
   {
     provider = " ",
@@ -109,7 +86,6 @@ return {
         lib.component.lsp(),
         FileFormat,
         FileEncoding,
-        FileSize,
         lib.component.nav({ scrollbar = false, }),
         lib.component.mode({ surround = { separator = "right" } }),
       },

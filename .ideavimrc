@@ -16,6 +16,9 @@ set nowrap
 set showmode
 set showcmd
 
+set scrolloff=7          " Lines of context
+set sidescrolloff=8      " Columns of context
+
 set highlightedyank
 set timeoutlen=5000         " increase the timeoutlen (default: 1000)
 
@@ -43,13 +46,6 @@ map <silent> L gt<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-nnoremap <c-d> <c-d>zz
-nnoremap % %zz
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap { {zz
-nnoremap } }zz
-
 " cancel search on ESC
 nnoremap <esc> <esc>:noh<cr>
 
@@ -60,7 +56,7 @@ map <c-k> :action MoveLineUp<CR>
 map <c-u> :action Forward<CR>
 map <c-o> :action Back<CR>
 
-nnoremap ge :action GotoNextError<CR>zz
+nnoremap ge :action GotoNextError<CR>
 nnoremap gE :action GotoPreviousError<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR>
