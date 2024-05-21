@@ -6,11 +6,12 @@ gui:
   showListFooter: false
   showCommandLog: false
   showRandomTip: false
+  commitHashLength: 3
 os:
   edit: 'nvim {{filename}}'
   editAtLine: 'nvim +{{line}} -- {{filename}}'
 git:
-  diffContextSize: 3
+  diffContextSize: 2
 keybinding:
   universal:
     nextTab: '%'

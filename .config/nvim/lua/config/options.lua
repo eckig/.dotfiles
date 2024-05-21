@@ -14,11 +14,6 @@ if vim.fn.has("wsl") == 1 then
   }
 end
 
-if vim.fn.executable('rg') == 1 then
-  vim.opt.grepprg = "rg --vimgrep"
-  vim.opt.grepformat = "%f:%l:%c:%m"
-end
-
 if vim.fn.has("gui_running") == 1 then
   vim.opt.guifont = { "BerkeleyMono Nerd Font:h10" }
 end
@@ -29,6 +24,7 @@ vim.g.mapleader = " " -- Set <space> as the leader key
 vim.g.maplocalleader = " "
 vim.g.big_file = { size = 1024 * 500, lines = 10000 }
 opt.mouse = "a"
+opt.bg = "light"
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
@@ -80,4 +76,3 @@ opt.fillchars = {
 }
 vim.o.showtabline = 2
 vim.wo.signcolumn = "yes"
--- vim.lsp.set_log_level("debug")
