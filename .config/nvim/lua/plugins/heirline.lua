@@ -76,7 +76,7 @@ return {
         hl = { fg = "fg", bg = "bg" },
         lib.component.mode(),
         WorkDir,
-        lib.component.git_branch(),
+        lib.component.git_branch({ hl = { fg = "#abb2bf" } }),
         lib.component.file_info(),
         lib.component.git_diff(),
         lib.component.diagnostics(),
