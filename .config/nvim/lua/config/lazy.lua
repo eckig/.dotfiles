@@ -17,6 +17,13 @@ require("lazy").setup({
   change_detection = { enabled = false },
   checker = { enabled = false },
   readme = { enabled = false },
+  pkg = {
+    sources = {
+      "lazy",
+      --"rockspec",
+      "packspec",
+    },
+  },
   performance = {
     rtp = {
       disabled_plugins = {
