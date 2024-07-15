@@ -1,12 +1,17 @@
 gui:
   language: 'en'
-  timeFormat: '2006/01/02 15:04'
-  showIcons: true
+  timeFormat: 02.01.2006
+  shortTimeFormat: 15:04
+  nerdFontsVersion: '3'
   showFileTree: true
   showListFooter: false
   showCommandLog: false
   showRandomTip: false
   commitHashLength: 3
+  showDivergenceFromBaseBranch: arrowAndNumber # or 'onlyArrow'
+  expandFocusedSidePanel: true
+  expandedSidePanelWeight: 3
+  commitAuthorShortLength: 4
 os:
   edit: 'nvim {{filename}}'
   editAtLine: 'nvim +{{line}} -- {{filename}}'
