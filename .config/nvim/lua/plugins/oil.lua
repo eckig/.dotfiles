@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "echasnovski/mini.icons" },
     event = "VimEnter",
     opts = {
       default_file_explorer = true,
@@ -15,7 +15,7 @@ return {
       {
         "<leader>fd",
         function()
-          require("oil").open_float(vim.fn.expand('%:p:h'))
+          require("oil").open_float(vim.fn.expand("%:p:h"))
         end,
       },
     },

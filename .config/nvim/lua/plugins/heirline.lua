@@ -1,15 +1,13 @@
 local WorkDir = {
-  static = {
-    root_patterns = { ".git", "lua" },
-  },
   condition = function(self)
-    self.root = require('mini.misc').find_root(0, self.root_patterns)
+    local root = LazyVim.root.get({ normalize = true })
+    self.root = vim.fs.basename(root)
     return self.root ~= nil
   end,
   update = { "BufEnter" },
   {
     provider = function(self)
-      return "󱉭 " .. vim.fn.fnamemodify(vim.fs.normalize(self.root), ":t")
+      return "󱉭 " .. self.root
     end,
   },
   {
@@ -24,7 +22,7 @@ local FileEncoding = {
   {
     provider = function()
       local enc = (vim.bo.fenc ~= "" and vim.bo.fenc) or vim.o.enc
-      return enc:upper()
+      return enc
     end,
   },
 }
@@ -43,7 +41,7 @@ local FileFormat = {
   {
     provider = function(self)
       local fmt = vim.bo.fileformat
-      return self.symbols[fmt] or fmt:upper()
+      return self.symbols[fmt] or fmt
     end,
   },
 }
@@ -52,8 +50,6 @@ return {
   "rebelot/heirline.nvim",
   dependencies = {
     "Zeioth/heirline-components.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "echasnovski/mini.misc",
   },
   opts = function()
     local lib = require("heirline-components.all")
@@ -64,19 +60,11 @@ return {
         lib.component.fill({ hl = { bg = "tabline_bg" } }),
         lib.component.tabline_tabpages(),
       },
-      statuscolumn = {
-        init = function(self)
-          self.bufnr = vim.api.nvim_get_current_buf()
-        end,
-        lib.component.foldcolumn({ condition=function() return true end, }),
-        lib.component.numbercolumn(),
-        lib.component.signcolumn({ condition=function() return true end, }),
-      } or nil,
       statusline = {
         hl = { fg = "fg", bg = "bg" },
         lib.component.mode(),
         WorkDir,
-        lib.component.git_branch({ hl = { fg = "#abb2bf" } }),
+        lib.component.git_branch(),
         lib.component.file_info(),
         lib.component.git_diff(),
         lib.component.diagnostics(),
@@ -86,7 +74,7 @@ return {
         lib.component.lsp(),
         FileFormat,
         FileEncoding,
-        lib.component.nav({ scrollbar = false, }),
+        lib.component.nav({ scrollbar = false }),
         lib.component.mode({ surround = { separator = "right" } }),
       },
     }
