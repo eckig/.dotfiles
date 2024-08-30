@@ -1,7 +1,13 @@
 Import-Module PSReadLine
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadlineOption -EditMode vi
+
+# env
+$env:REVIEW_BASE="master";
 
 Set-Alias -Name n -Value nvim
 Set-Alias -Name lg -Value lazygit
