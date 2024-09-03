@@ -17,6 +17,9 @@ os:
   editAtLine: 'nvim +{{line}} -- {{filename}}'
 git:
   diffContextSize: 2
+  paging:
+    # Requires: https://github.com/Wilfred/difftastic
+    externalDiffCommand: difft --color=always --display=inline --syntax-highlight=on --tab-width=2
 keybinding:
   universal:
     nextTab: '%'
