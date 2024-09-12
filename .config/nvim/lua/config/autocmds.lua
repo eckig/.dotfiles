@@ -27,6 +27,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
   end,
 })
 
+-- replace umlauts in properties
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.properties" },
   callback = function(event)
@@ -40,3 +41,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.cmd(":%s/ß/\\\\u00DF/ge")
   end,
 })
+
+-- autosave
+vim.api.nvim_create_autocmd(
+  { "FocusLost", "ModeChanged", "TextChanged", "BufEnter" },
+  { desc = "autosave", pattern = "*", command = "silent! update" }
+)
