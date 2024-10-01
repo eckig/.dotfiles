@@ -53,7 +53,7 @@ map gc    :action CommentByLineComment<CR>
 map qq    :action CloseContent<CR>
 map <c-j> :action MoveLineDown<CR>
 map <c-k> :action MoveLineUp<CR>
-map <c-u> :action Forward<CR>
+map <c-i> :action Forward<CR>
 map <c-o> :action Back<CR>
 
 nnoremap ge :action GotoNextError<CR>
