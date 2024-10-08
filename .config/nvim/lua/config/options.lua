@@ -23,6 +23,7 @@ local opt = vim.opt
 vim.g.mapleader = " " -- Set <space> as the leader key
 vim.g.maplocalleader = " "
 vim.g.big_file = { size = 1024 * 500, lines = 10000 }
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46_cache/"
 vim.g.nofsync = true
 opt.mouse = "a"
 opt.autowrite = true -- Enable auto write
