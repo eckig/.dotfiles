@@ -6,9 +6,6 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadlineOption -EditMode vi
 
-# env
-$env:REVIEW_BASE="master";
-
 Set-Alias -Name n -Value nvim
 Set-Alias -Name lg -Value lazygit
 
