@@ -1,13 +1,15 @@
 local WorkDir = {
+  static = {
+    root_patterns = { ".git", "lua" },
+  },
   condition = function(self)
-    local root = LazyVim.root.get({ normalize = true })
-    self.root = vim.fs.basename(root)
+    self.root = require("mini.misc").find_root(0, self.root_patterns)
     return self.root ~= nil
   end,
   update = { "BufEnter" },
   {
     provider = function(self)
-      return "󱉭 " .. self.root
+      return "󱉭 " .. vim.fn.fnamemodify(vim.fs.normalize(self.root), ":t")
     end,
   },
   {
@@ -50,6 +52,7 @@ return {
   "rebelot/heirline.nvim",
   dependencies = {
     "Zeioth/heirline-components.nvim",
+    "echasnovski/mini.misc",
   },
   opts = function()
     local lib = require("heirline-components.all")
@@ -60,6 +63,22 @@ return {
         lib.component.fill({ hl = { bg = "tabline_bg" } }),
         lib.component.tabline_tabpages(),
       },
+      statuscolumn = {
+        init = function(self)
+          self.bufnr = vim.api.nvim_get_current_buf()
+        end,
+        lib.component.foldcolumn({
+          condition = function()
+            return true
+          end,
+        }),
+        lib.component.numbercolumn(),
+        lib.component.signcolumn({
+          condition = function()
+            return true
+          end,
+        }),
+      } or nil,
       statusline = {
         hl = { fg = "fg", bg = "bg" },
         lib.component.mode(),
