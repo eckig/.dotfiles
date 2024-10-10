@@ -24,8 +24,27 @@ local FileEncoding = {
   {
     provider = function()
       local enc = (vim.bo.fenc ~= "" and vim.bo.fenc) or vim.o.enc
-      return enc
+      return string.upper(enc)
     end,
+  },
+}
+
+local FileSize = {
+  {
+    provider = "   ",
+  },
+  {
+    provider = function()
+        -- stackoverflow, compute human readable file size
+        local suffix = { 'b', 'k', 'M', 'G', 'T', 'P', 'E' }
+        local fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
+        fsize = (fsize < 0 and 0) or fsize
+        if fsize < 1024 then
+            return fsize..suffix[1]
+        end
+        local i = math.floor((math.log(fsize) / math.log(1024)))
+        return string.format("%.2g%s", fsize / math.pow(1024, i), suffix[i + 1])
+    end
   },
 }
 
@@ -93,6 +112,7 @@ return {
         lib.component.lsp(),
         FileFormat,
         FileEncoding,
+        FileSize,
         lib.component.nav({ scrollbar = false }),
         lib.component.mode({ surround = { separator = "right" } }),
       },
