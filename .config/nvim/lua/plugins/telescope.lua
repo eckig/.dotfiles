@@ -6,6 +6,9 @@ return {
     config = function()
       require("telescope").setup({
         defaults = {
+          prompt_prefix = "   ",
+          selection_caret = " ",
+          entry_prefix = " ",
           file_ignore_patterns = {
             "^%.git/",
             "^%.git$",
