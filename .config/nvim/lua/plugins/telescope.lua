@@ -29,6 +29,10 @@ return {
           },
         },
       })
+
+      local cl = vim.api.nvim_get_hl(0, { name = "Cursor" })
+      vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = cl.bg, fg = cl.fg })
+
     end,
     dependencies = {
       {

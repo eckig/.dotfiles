@@ -5,6 +5,10 @@ return {
     dependencies = {
       "nvchad/volt",
     },
+    cmd = {
+      "Shades",
+      "Huefy"
+    },
     keys = {
       {
         "<leader>co",
