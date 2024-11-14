@@ -1,5 +1,3 @@
-local is_big_file = require("utils").is_big_file
-
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -10,9 +8,6 @@ return {
     opts = {
       highlight = {
         enable = true,
-        disable = function(_, bufnr)
-          return is_big_file(bufnr)
-        end,
         additional_vim_regex_highlighting = false,
       },
       indent = { enable = true },

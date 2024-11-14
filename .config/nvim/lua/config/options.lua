@@ -22,7 +22,6 @@ end
 local opt = vim.opt
 vim.g.mapleader = " " -- Set <space> as the leader key
 vim.g.maplocalleader = " "
-vim.g.big_file = { size = 1024 * 500, lines = 10000 }
 vim.g.nofsync = true
 vim.o.showtabline = 2 -- always display tabs/buffers
 opt.mouse = "a"
