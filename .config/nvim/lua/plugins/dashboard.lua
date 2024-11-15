@@ -35,7 +35,7 @@ return {
           { action = "Telescope oldfiles", desc = " Recent Files", icon = " ", key = "r" },
           { action = "Telescope live_grep", desc = " Find Text", icon = " ", key = "g" },
           { action = function() require("oil").open_float(vim.fn.expand("%:p:h")) end, desc = " File Explorer", icon = " ", key = "b" },
-          { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "p" },
+          { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
           { action = function() vim.api.nvim_input("<cmd>qa!<cr>") end, desc = " Quit", icon = " ", key = "q" },
         },
         footer = function()
