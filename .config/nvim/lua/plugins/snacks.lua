@@ -10,8 +10,6 @@ return {
         timeout = 3000,
       },
       quickfile = { enabled = true },
-      statuscolumn = { enabled = false },
-      words = { enabled = false },
       styles = {
         notification = {
           wo = { wrap = true } -- Wrap notifications
