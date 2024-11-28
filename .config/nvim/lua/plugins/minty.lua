@@ -1,9 +1,9 @@
 return {
   {
-    "nvchad/minty",
+    "nvzone/minty",
     lazy = true,
     dependencies = {
-      "nvchad/volt",
+      "nvzone/volt",
     },
     cmd = {
       "Shades",
