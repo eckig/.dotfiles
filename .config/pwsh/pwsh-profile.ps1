@@ -4,7 +4,6 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-Set-PSReadlineOption -EditMode vi
 
 Set-Alias -Name n -Value nvim
 Set-Alias -Name lg -Value lazygit
@@ -25,6 +24,14 @@ function ly
 function jobs
 {
   Get-Job
+}
+function fg
+{
+  $j = Get-Job -HasMoreData $True -Newest 1
+  if($j -ne $null)
+  {
+    receive-job -Job $j -wait
+  }
 }
 
 # scoop update and cleanup
