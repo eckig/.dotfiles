@@ -5,6 +5,7 @@ return {
     lazy = false,
     opts = {
       bigfile = { enabled = true },
+      input = { enabled = true },
       notifier = {
         enabled = true,
         timeout = 3000,
