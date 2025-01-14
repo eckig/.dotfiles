@@ -55,6 +55,8 @@ map <c-j> :action MoveLineDown<CR>
 map <c-k> :action MoveLineUp<CR>
 map <c-i> :action Forward<CR>
 map <c-o> :action Back<CR>
+map g;    :action JumpToLastChange<CR>
+map g,    :action JumpToNextChange<CR>
 
 nnoremap ge :action GotoNextError<CR>
 nnoremap gE :action GotoPreviousError<CR>
