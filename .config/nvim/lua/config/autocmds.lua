@@ -21,6 +21,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- reload changed file:
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = "*",
+})
+
 -- replace umlauts in properties
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.properties" },
