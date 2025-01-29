@@ -4,7 +4,10 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      bigfile = { enabled = true },
+      bigfile = {
+        enabled = true,
+        size = 5 * 1024 * 1024, -- 5MB
+      },
       input = { enabled = true },
       notifier = {
         enabled = true,
