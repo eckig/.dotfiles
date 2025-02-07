@@ -90,6 +90,10 @@ opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldtext = require("utils.foldtext")
 
+-- title
+vim.opt.title = true
+vim.opt.titlestring = [[%t – %{fnamemodify(getcwd(), ':t')}]]
+
 -- Language
 opt.spelllang = { "en" }
 vim.cmd("language en_US")
