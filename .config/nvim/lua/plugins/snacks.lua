@@ -8,6 +8,16 @@ return {
         enabled = true,
         size = 5 * 1024 * 1024, -- 5MB
       },
+      picker = {
+        matcher = {
+          frecency = true, -- frecency bonus
+        },
+      },
+      formatters = {
+        file = {
+          filename_first = true, -- display filename before the file path
+        },
+      },
       input = { enabled = true },
       notifier = {
         enabled = true,
