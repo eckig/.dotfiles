@@ -88,7 +88,8 @@ opt.foldlevelstart = 99
 opt.foldenable = true
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldtext = require("utils.foldtext")
+opt.foldtext = ''
+opt.fillchars = 'fold: '
 
 -- title
 vim.opt.title = true
