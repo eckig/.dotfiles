@@ -22,8 +22,6 @@ set sidescrolloff=8      " Columns of context
 set highlightedyank
 set timeoutlen=5000         " increase the timeoutlen (default: 1000)
 
-set number relativenumber  " relative line numbers
-
 " keybindings
 map <leader>ff <action>(GotoClass)
 map <leader>/  <action>(FindInPath)

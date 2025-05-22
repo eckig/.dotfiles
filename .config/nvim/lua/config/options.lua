@@ -68,9 +68,9 @@ opt.termguicolors = true -- True color support
 opt.cursorline = true -- Enable highlighting of the current line
 opt.cursorcolumn = false -- Enable highlighting of the current column
 opt.laststatus = 3 -- global statusline
+opt.cmdheight = 0
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.number = true -- Print line number
-opt.relativenumber = true -- Relative line numbers
 opt.scrolloff = 7 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
 
