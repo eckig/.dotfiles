@@ -1,6 +1,8 @@
 return {
+  { 'nvim-mini/mini.nvim', version = false },
+
   {
-    "echasnovski/mini.cursorword",
+    "nvim-mini/mini.cursorword",
     event = "VeryLazy",
     config = function()
       require("mini.cursorword").setup()
@@ -8,7 +10,7 @@ return {
   },
 
   {
-    "echasnovski/mini.align",
+    "nvim-mini/mini.align",
     event = "BufEnter *.properties",
     config = function()
       local var align = require("mini.align")
@@ -26,7 +28,7 @@ return {
   },
 
   {
-    "echasnovski/mini.hipatterns",
+    "nvim-mini/mini.hipatterns",
     event = "VeryLazy",
     config = function()
       local hipatterns = require("mini.hipatterns")
