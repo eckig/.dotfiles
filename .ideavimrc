@@ -20,7 +20,7 @@ set scrolloff=7          " Lines of context
 set sidescrolloff=8      " Columns of context
 
 set highlightedyank
-set timeoutlen=5000         " increase the timeoutlen (default: 1000)
+set timeoutlen=500         " increase the timeoutlen (default: 1000)
 
 " keybindings
 map <leader>ff <action>(GotoClass)
