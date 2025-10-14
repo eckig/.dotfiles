@@ -8,6 +8,14 @@ return {
   },
 
   {
+    'nvim-mini/mini.tabline',
+    version = false,
+    config = function()
+      require("mini.tabline").setup()
+    end,
+  },
+
+  {
     "nvim-mini/mini.align",
     event = "BufEnter *.properties",
     config = function()

@@ -73,6 +73,8 @@ opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift t
 opt.number = true -- Print line number
 opt.scrolloff = 7 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
+vim.opt.background = "dark"
+vim.cmd("colorscheme retrobox")
 
 -- spaces, tabs and indents
 opt.expandtab = true -- Use spaces instead of tabs
