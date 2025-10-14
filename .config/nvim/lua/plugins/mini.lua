@@ -16,6 +16,22 @@ return {
   },
 
   {
+    'nvim-mini/mini.statusline',
+    version = false,
+    config = function()
+      require("mini.statusline").setup()
+    end,
+  },
+
+  {
+    'nvim-mini/mini-git',
+    version = false,
+    config = function()
+      require("mini.git").setup()
+    end,
+  },
+
+  {
     "nvim-mini/mini.align",
     event = "BufEnter *.properties",
     config = function()
