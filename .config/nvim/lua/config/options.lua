@@ -24,6 +24,8 @@ vim.g.mapleader = " " -- Set <space> as the leader key
 vim.g.maplocalleader = " "
 vim.g.nofsync = true
 vim.o.showtabline = 2 -- always display tabs/buffers
+vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
+vim.o.switchbuf   = 'usetab'       -- Use already opened buffers when switching
 opt.mouse = "a"
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -100,3 +102,23 @@ vim.opt.titlestring = [[%t – %{fnamemodify(getcwd(), ':t')}]]
 -- Language
 opt.spelllang = { "en" }
 vim.cmd("language en_US")
+
+-- Diagnostics
+vim.diagnostic.config({
+  -- Show signs on top of any other sign, but only for warnings and errors
+  signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
+
+  -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
+  underline = { severity = { min = 'HINT', max = 'ERROR' } },
+
+  -- Show more details immediately for errors on the current line
+  virtual_lines = false,
+  virtual_text = {
+    current_line = true,
+    severity = { min = 'ERROR', max = 'ERROR' },
+  },
+
+  -- Don't update diagnostics when typing
+  update_in_insert = false,
+})
+
