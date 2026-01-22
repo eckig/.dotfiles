@@ -63,6 +63,15 @@ return {
         },
       })
 
+      -- disable completion in certain files
+      local f = function(args)
+        local ft = vim.bo[args.buf].filetype
+        if ft == 'snacks_picker_list' or ft == 'help' then return end
+        vim.b[args.buf].minicompletion_disable = true
+      end
+      vim.api.nvim_create_autocmd('Filetype', { callback = f })
+
+      -- link completion with LSP
       local on_attach = function(ev)
         vim.bo[ev.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
       end

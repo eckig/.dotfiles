@@ -103,6 +103,11 @@ vim.opt.titlestring = [[%t – %{fnamemodify(getcwd(), ':t')}]]
 opt.spelllang = { "en" }
 vim.cmd("language en_US")
 
+-- LSP
+vim.lsp.enable({
+  "yamlls",
+})
+
 -- Diagnostics
 vim.diagnostic.config({
   -- Show signs on top of any other sign, but only for warnings and errors
