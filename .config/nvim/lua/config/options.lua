@@ -106,6 +106,7 @@ vim.cmd("language en_US")
 -- LSP
 vim.lsp.enable({
   "yamlls",
+  "lua_ls"
 })
 
 -- Diagnostics
