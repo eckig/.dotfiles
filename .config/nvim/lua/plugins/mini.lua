@@ -1,39 +1,30 @@
 return {
   {
     "nvim-mini/mini.cursorword",
+    version = false,
     event = "VeryLazy",
-    config = function()
-      require("mini.cursorword").setup()
-    end,
   },
 
   {
     'nvim-mini/mini.tabline',
     version = false,
-    config = function()
-      require("mini.tabline").setup()
-    end,
   },
 
   {
     'nvim-mini/mini.statusline',
     version = false,
-    config = function()
-      require("mini.statusline").setup()
-    end,
   },
 
   {
     'nvim-mini/mini.cmdline',
     version = false,
-    config = function()
-      require("mini.cmdline").setup()
-    end,
+    event = "VeryLazy",
   },
 
   {
     'nvim-mini/mini.keymap',
     version = false,
+    event = "VeryLazy",
     config = function()
       local map_multistep = require('mini.keymap').map_multistep
       map_multistep('i', '<Tab>',   { 'pmenu_next' })
@@ -52,7 +43,8 @@ return {
       local process_items = function(items, base)
         return MiniCompletion.default_process_items(items, base, process_items_opts)
       end
-      require('mini.completion').setup({
+      require('mini.completion').setup(
+      {
         lsp_completion = {
           -- Without this config autocompletion is set up through `:h 'completefunc'`.
           -- Although not needed, setting up through `:h 'omnifunc'` is cleaner
@@ -93,9 +85,33 @@ return {
   {
     'nvim-mini/mini-git',
     version = false,
-    config = function()
-      require("mini.git").setup()
-    end,
+    event = "VeryLazy",
+  },
+
+  {
+    'nvim-mini/mini.notify',
+    version = false,
+  },
+
+  {
+    'nvim-mini/mini.pick',
+    version = false,
+    event = "VeryLazy",
+    keys = {
+      { "<leader>fr", '<Cmd>Pick visit_paths cwd=""<CR>', desc = "Recent" },
+      { "<leader>/",  '<Cmd>Pick grep_live<CR>', desc = "Grep" },
+      { "<leader>ff", '<Cmd>Pick files<CR>', desc = "Find Files" },
+    },
+  },
+
+  {
+    'nvim-mini/mini.extra',
+    version = false,
+  },
+
+  {
+    'nvim-mini/mini.visits',
+    version = false,
   },
 
   {
@@ -103,13 +119,16 @@ return {
     event = "BufEnter *.properties",
     config = function()
       local var align = require("mini.align")
-      align.setup({
-        options = {
+      align.setup(
+      {
+        options = 
+        {
           split_pattern = "=",
           justify_side = "left",
           merge_delimiter = " ",
         },
-        steps = {
+        steps = 
+        {
           pre_justify = { align.gen_step.trim() },
         },
       })
@@ -121,14 +140,38 @@ return {
     event = "VeryLazy",
     config = function()
       local hipatterns = require("mini.hipatterns")
-      hipatterns.setup({
-        highlighters = {
+      hipatterns.setup(
+      {
+        highlighters = 
+        {
           fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
           hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
           todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
           note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
           hex_color = hipatterns.gen_highlighter.hex_color(),
         },
+      })
+    end,
+  },
+
+  {
+    'nvim-mini/mini.starter',
+    version = false,
+    config = function()
+      require("mini.starter").setup(
+      {
+          header = [[
+⠀⠀⠀⣠⣶⣆⠀⠀⠀⠀⠀⠀⠀⠀⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⣠⣾⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⣿⣿⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣾⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢰⡄⣠⠴⠶⠶⣤⡀⠀⠀⢀⣠⠴⠶⠶⢤⡀⠀⠀⠀⣠⠴⠶⠶⢦⣄⠀⢰⣶⣶⠀⠀⠀⠀⣰⣶⡶⢰⣶⣶⠀⠀⣶⣶⣤⣶⣿⣷⣦⣠⣶⣾⣿⣷⣦⡀
+⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣷⡀⠀⠀⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⡏⠀⠀⠀⠀⠈⣷⠀⢠⡞⠁⠀⠀⠀⠀⠹⡆⢀⡾⠁⠀⠀⠀⠀⠘⣷⡀⢻⣿⣧⠀⠀⢠⣿⣿⠁⢸⣿⣿⠀⠀⣿⣿⠋⠀⠀⢹⣿⣿⠋⠀⠈⢻⣿⣷
+⣿⣿⣿⣿⣿⠀⠻⣿⣿⣿⣿⣿⣆⠀⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⣿⠀⢸⡗⠒⠒⠒⠒⠒⠚⠃⢸⡇⠀⠀⠀⠀⠀⠀⢸⡇⠀⢿⣿⡆⢀⣿⣿⠃⠀⢸⣿⣿⠀⠀⣿⣿⠀⠀⠀⢸⣿⣿⠀⠀⠀⢸⣿⣿
+⣿⣿⣿⣿⣿⠀⠀⠙⣿⣿⣿⣿⣿⣧⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⣿⠀⠸⣇⠀⠀⠀⠀⠀⠀⠀⠸⣧⠀⠀⠀⠀⠀⠀⣾⠃⠀⠈⣿⣿⣼⣿⠇⠀⠀⢸⣿⣿⠀⠀⣿⣿⠀⠀⠀⢸⣿⣿⠀⠀⠀⢸⣿⣿
+⣿⣿⣿⣿⣿⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⣿⠀⠀⠙⠷⣤⣀⣀⣤⠶⠂⠀⠙⠷⣤⣀⣀⣤⠾⠃⠀⠀⠀⠘⣿⣿⠏⠀⠀⠀⢸⣿⣿⠀⠀⣿⣿⠀⠀⠀⢸⣿⣿⠀⠀⠀⢸⣿⣿
+⢿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠙⢿⣿⣿⠀⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠙⢿⠀⠀⠀⠀⠀⠀⠀⠀⠻⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ]],
       })
     end,
   },
