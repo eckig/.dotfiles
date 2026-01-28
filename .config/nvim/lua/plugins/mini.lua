@@ -3,22 +3,34 @@ return {
     "nvim-mini/mini.cursorword",
     version = false,
     event = "VeryLazy",
+    config = function()
+      require("mini.cursorword").setup()
+    end,
   },
 
   {
     'nvim-mini/mini.tabline',
     version = false,
+    config = function()
+      require("mini.tabline").setup()
+    end,
   },
 
   {
     'nvim-mini/mini.statusline',
     version = false,
+    config = function()
+      require("mini.statusline").setup()
+    end,
   },
 
   {
     'nvim-mini/mini.cmdline',
     version = false,
     event = "VeryLazy",
+    config = function()
+      require("mini.cmdline").setup()
+    end,
   },
 
   {
@@ -86,17 +98,26 @@ return {
     'nvim-mini/mini-git',
     version = false,
     event = "VeryLazy",
+    config = function()
+      require("mini.git").setup()
+    end,
   },
 
   {
     'nvim-mini/mini.notify',
     version = false,
+    config = function()
+      require("mini.notify").setup()
+    end,
   },
 
   {
     'nvim-mini/mini.pick',
     version = false,
     event = "VeryLazy",
+    config = function()
+      require("mini.pick").setup()
+    end,
     keys = {
       { "<leader>fr", '<Cmd>Pick visit_paths cwd=""<CR>', desc = "Recent" },
       { "<leader>/",  '<Cmd>Pick grep_live<CR>', desc = "Grep" },
@@ -107,11 +128,17 @@ return {
   {
     'nvim-mini/mini.extra',
     version = false,
+    config = function()
+      require("mini.extra").setup()
+    end,
   },
 
   {
     'nvim-mini/mini.visits',
     version = false,
+    config = function()
+      require("mini.visits").setup()
+    end,
   },
 
   {
