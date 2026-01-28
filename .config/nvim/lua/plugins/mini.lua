@@ -1,54 +1,26 @@
 return {
   {
-    "nvim-mini/mini.cursorword",
+    "nvim-mini/mini.nvim",
     version = false,
-    event = "VeryLazy",
     config = function()
       require("mini.cursorword").setup()
-    end,
-  },
-
-  {
-    'nvim-mini/mini.tabline',
-    version = false,
-    config = function()
       require("mini.tabline").setup()
-    end,
-  },
-
-  {
-    'nvim-mini/mini.statusline',
-    version = false,
-    config = function()
       require("mini.statusline").setup()
-    end,
-  },
-
-  {
-    'nvim-mini/mini.cmdline',
-    version = false,
-    event = "VeryLazy",
-    config = function()
       require("mini.cmdline").setup()
-    end,
-  },
+      require("mini.git").setup()
+      require("mini.notify").setup()
+      require("mini.pick").setup()
+      require("mini.visits").setup()
+      require("mini.extra").setup()
+      require('mini.trailspace').setup()
 
-  {
-    'nvim-mini/mini.keymap',
-    version = false,
-    event = "VeryLazy",
-    config = function()
+      -- Keymap
       local map_multistep = require('mini.keymap').map_multistep
       map_multistep('i', '<Tab>',   { 'pmenu_next' })
       map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
       map_multistep('i', '<CR>',    { 'pmenu_accept' })
-    end,
-  },
 
-  {
-    "nvim-mini/mini.completion",
-    version = false,
-    config = function()
+      -- Completion
       -- Customize post-processing of LSP responses for a better user experience.
       -- Don't show 'Text' suggestions (usually noisy) and show snippets last.
       local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
@@ -58,118 +30,27 @@ return {
       require('mini.completion').setup(
       {
         lsp_completion = {
-          -- Without this config autocompletion is set up through `:h 'completefunc'`.
-          -- Although not needed, setting up through `:h 'omnifunc'` is cleaner
-          -- (sets up only when needed) and makes it possible to use `<C-u>`.
           source_func = 'omnifunc',
           auto_setup = false,
           process_items = process_items,
         },
       })
 
-      -- disable completion in certain files
-      local f = function(args)
-        local ft = vim.bo[args.buf].filetype
-        if ft == 'snacks_picker_list' or ft == 'help' then return end
-        vim.b[args.buf].minicompletion_disable = true
-      end
-      vim.api.nvim_create_autocmd('Filetype', { callback = f })
-
-      -- link completion with LSP
       local on_attach = function(ev)
         vim.bo[ev.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
       end
 
-      local gr = vim.api.nvim_create_augroup('custom-config', {})
-      local new_autocmd = function(event, pattern, callback, desc)
-        local opts = { group = gr, pattern = pattern, callback = callback, desc = desc }
-        vim.api.nvim_create_autocmd(event, opts)
-      end
-
-      new_autocmd('LspAttach', nil, on_attach, "Set 'omnifunc'")
+      _Z.new_autocmd('LspAttach', nil, on_attach, "Set 'omnifunc'")
 
       -- Advertise to servers that Neovim now supports certain set of completion and
       -- signature features through 'mini.completion'.
       vim.lsp.config('*', { capabilities = MiniCompletion.get_lsp_capabilities() })
-    end,
-  },
 
-  {
-    'nvim-mini/mini-git',
-    version = false,
-    event = "VeryLazy",
-    config = function()
-      require("mini.git").setup()
-    end,
-  },
-
-  {
-    'nvim-mini/mini.notify',
-    version = false,
-    config = function()
-      require("mini.notify").setup()
-    end,
-  },
-
-  {
-    'nvim-mini/mini.pick',
-    version = false,
-    event = "VeryLazy",
-    config = function()
-      require("mini.pick").setup()
-    end,
-    keys = {
-      { "<leader>fr", '<Cmd>Pick visit_paths cwd=""<CR>', desc = "Recent" },
-      { "<leader>/",  '<Cmd>Pick grep_live<CR>', desc = "Grep" },
-      { "<leader>ff", '<Cmd>Pick files<CR>', desc = "Find Files" },
-    },
-  },
-
-  {
-    'nvim-mini/mini.extra',
-    version = false,
-    config = function()
-      require("mini.extra").setup()
-    end,
-  },
-
-  {
-    'nvim-mini/mini.visits',
-    version = false,
-    config = function()
-      require("mini.visits").setup()
-    end,
-  },
-
-  {
-    "nvim-mini/mini.align",
-    event = "BufEnter *.properties",
-    config = function()
-      local var align = require("mini.align")
-      align.setup(
-      {
-        options = 
-        {
-          split_pattern = "=",
-          justify_side = "left",
-          merge_delimiter = " ",
-        },
-        steps = 
-        {
-          pre_justify = { align.gen_step.trim() },
-        },
-      })
-    end,
-  },
-
-  {
-    "nvim-mini/mini.hipatterns",
-    event = "VeryLazy",
-    config = function()
+      -- Hipatterns
       local hipatterns = require("mini.hipatterns")
       hipatterns.setup(
       {
-        highlighters = 
+        highlighters =
         {
           fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
           hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
@@ -178,13 +59,41 @@ return {
           hex_color = hipatterns.gen_highlighter.hex_color(),
         },
       })
-    end,
-  },
 
-  {
-    'nvim-mini/mini.starter',
-    version = false,
-    config = function()
+      -- Align (properties file by '=')
+      local var align = require("mini.align")
+      align.setup(
+      {
+        options =
+        {
+          split_pattern = "=",
+          justify_side = "left",
+          merge_delimiter = " ",
+        },
+        steps =
+        {
+          pre_justify = { align.gen_step.trim() },
+        },
+      })
+
+      -- Icons
+      local ext3_blocklist = { scm = true, txt = true, yml = true }
+      local ext4_blocklist = { json = true, yaml = true }
+      require('mini.icons').setup({
+        use_file_extension = function(ext, _)
+          return not (ext3_blocklist[ext:sub(-3)] or ext4_blocklist[ext:sub(-4)])
+        end,
+      })
+      MiniIcons.tweak_lsp_kind()
+
+      -- Indentscope
+      local var indentscope = require('mini.indentscope')
+      indentscope.setup(
+      {
+        draw = { animation = indentscope.gen_animation.none() }
+      })
+
+      -- Starter
       require("mini.starter").setup(
       {
           header = [[
@@ -202,4 +111,5 @@ return {
       })
     end,
   },
+
 }

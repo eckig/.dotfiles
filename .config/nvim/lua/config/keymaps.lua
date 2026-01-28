@@ -17,7 +17,12 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- Move to window using the <ctrl> hjkl keys
-map("n", "<C-H>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+map("n", "<C-H>", "<C-w>h", { desc = "Go to Left Window",  remap = true })
 map("n", "<C-J>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
 map("n", "<C-K>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 map("n", "<C-L>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+
+-- Picker
+map("n", "<leader>fr", '<Cmd>Pick visit_paths cwd=""<CR>', { desc = "Recent" })
+map("n", "<leader>/",  '<Cmd>Pick grep_live<CR>', { desc = "Grep" })
+map("n", "<leader>ff", '<Cmd>Pick files<CR>', { desc = "Find Files" })

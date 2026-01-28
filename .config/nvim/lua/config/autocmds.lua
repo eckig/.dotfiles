@@ -1,34 +1,21 @@
-vim.api.nvim_create_autocmd({ "WinEnter", "FocusGained" }, {
-  pattern = "*",
-  command = "setlocal number relativenumber",
-})
-vim.api.nvim_create_autocmd({ "WinLeave", "FocusLost" }, {
-  pattern = "*",
-  command = "setlocal number norelativenumber",
-})
-
--- always open quickfix window automatically.
-vim.api.nvim_create_autocmd("QuickFixCmdPost", {
-  group = vim.api.nvim_create_augroup("AutoOpenQuickfix", { clear = true }),
-  pattern = { "[^l]*" },
-  command = "cwindow",
-})
-
 -- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
+vim.api.nvim_create_autocmd("TextYankPost",
+{
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
 -- reload changed file:
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" },
+{
   command = "if mode() != 'c' | checktime | endif",
   pattern = "*",
 })
 
 -- replace umlauts in properties
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+vim.api.nvim_create_autocmd({ "BufWritePre" },
+{
   pattern = { "*.properties" },
   callback = function(event)
     vim.cmd(":set noignorecase")
@@ -39,6 +26,29 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.cmd(":%s/ü/\\\\u00FC/ge")
     vim.cmd(":%s/Ü/\\\\u00DC/ge")
     vim.cmd(":%s/ß/\\\\u00DF/ge")
+  end,
+})
+
+-- Don't auto-wrap comments and don't insert comment leader after hitting 'o'.
+-- Do on `FileType` to always override these changes from filetype plugins.
+local f = function() vim.cmd('setlocal formatoptions-=c formatoptions-=o') end
+_Z.new_autocmd('FileType', nil, f, "Proper 'formatoptions'")
+
+-- Diagnostics
+vim.api.nvim_create_autocmd({ "LspAttach" },
+{
+  callback = function(event)
+    vim.diagnostic.config(
+    {
+      signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
+      underline = { severity = { min = 'HINT', max = 'ERROR' } },
+      virtual_lines = false,
+      virtual_text =
+      {
+        current_line = true,
+        severity = { min = 'ERROR', max = 'ERROR' },
+      },
+    })
   end,
 })
 
