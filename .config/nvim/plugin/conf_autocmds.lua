@@ -34,24 +34,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" },
 local f = function() vim.cmd('setlocal formatoptions-=c formatoptions-=o') end
 _Z.new_autocmd('FileType', nil, f, "Proper 'formatoptions'")
 
--- Diagnostics
-vim.api.nvim_create_autocmd({ "LspAttach" },
-{
-  callback = function(event)
-    vim.diagnostic.config(
-    {
-      signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
-      underline = { severity = { min = 'HINT', max = 'ERROR' } },
-      virtual_lines = false,
-      virtual_text =
-      {
-        current_line = true,
-        severity = { min = 'ERROR', max = 'ERROR' },
-      },
-    })
-  end,
-})
-
 -- open last edit location
 -- adapted from https://github.com/ethanholz/nvim-lastplace/blob/main/lua/nvim-lastplace/init.lua
 -- see https://github.com/neovim/neovim/issues/16339

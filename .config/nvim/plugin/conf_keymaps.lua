@@ -26,3 +26,13 @@ map("n", "<C-L>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 map("n", "<leader>fr", '<Cmd>Pick visit_paths cwd=""<CR>', { desc = "Recent" })
 map("n", "<leader>/",  '<Cmd>Pick grep_live<CR>', { desc = "Grep" })
 map("n", "<leader>ff", '<Cmd>Pick files<CR>', { desc = "Find Files" })
+
+-- Oil
+map("n", "<leader>fd", function() require("oil").open_float(vim.fn.expand("%:p:h")) end, { desc = "Oil" })
+
+vim.api.nvim_create_user_command("Cppath", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+map("n", "<leader>cc", "<cmd>Cppath<cr>")

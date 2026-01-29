@@ -2,169 +2,141 @@
     "apps": [
         {
             "Name": "7zip",
+            "Version": "25.01",
             "Info": "",
-            "Version": "24.05",
-            "Updated": "2024-05-16T08:03:39.9519464+02:00",
-            "Source": "main"
-        },
-        {
-            "Name": "ffmpeg",
-            "Info": "",
-            "Version": "7.0",
-            "Updated": "2024-04-08T08:52:11.3607799+02:00",
-            "Source": "main"
-        },
-        {
-            "Name": "gifski",
-            "Info": "",
-            "Version": "1.32.0",
-            "Updated": "2024-04-25T07:53:42.3186636+02:00",
-            "Source": "main"
-        },
-        {
-            "Name": "git",
-            "Info": "",
-            "Version": "2.45.1",
-            "Updated": "2024-05-15T07:42:38.1062731+02:00",
-            "Source": "main"
+            "Source": "main",
+            "Updated": "2025-11-11T14:32:38.9977075+01:00"
         },
         {
             "Name": "jq",
+            "Version": "1.8.1",
             "Info": "",
-            "Version": "1.7.1",
-            "Updated": "2024-02-09T14:01:14.5839497+01:00",
-            "Source": "main"
-        },
-        {
-            "Name": "keepassxc",
-            "Info": "",
-            "Version": "2.7.8",
-            "Updated": "2024-05-06T16:00:33.8575991+02:00",
-            "Source": "extras"
+            "Source": "main",
+            "Updated": "2025-07-10T07:45:22.4650364+02:00"
         },
         {
             "Name": "keystore-explorer",
+            "Version": "5.6.1",
             "Info": "",
-            "Version": "5.5.3",
-            "Updated": "2024-01-02T07:51:47.9421997+01:00",
-            "Source": "extras"
+            "Source": "extras",
+            "Updated": "2026-01-05T08:16:33.8684401+01:00"
         },
         {
-            "Name": "lazydocker",
+            "Name": "kubectl",
+            "Version": "1.35.0",
             "Info": "",
-            "Version": "0.23.1",
-            "Updated": "2024-01-31T10:32:49.9442795+01:00",
-            "Source": "main"
+            "Source": "main",
+            "Updated": "2026-01-02T07:39:50.6044675+01:00"
         },
         {
             "Name": "lazygit",
+            "Version": "0.58.1",
             "Info": "",
-            "Version": "0.42.0",
-            "Updated": "2024-05-21T08:03:35.7686193+02:00",
-            "Source": "extras"
+            "Source": "extras",
+            "Updated": "2026-01-13T07:05:05.7184616+01:00"
         },
         {
-            "Name": "llvm",
+            "Name": "maven",
+            "Version": "3.9.12",
             "Info": "",
-            "Version": "18.1.6",
-            "Updated": "2024-05-23T07:53:51.3388918+02:00",
-            "Source": "main"
-        },
-        {
-            "Name": "mingw",
-            "Info": "",
-            "Version": "13.2.0-rt_v11-rev1",
-            "Updated": "2024-01-15T11:10:20.2850627+01:00",
-            "Source": "main"
+            "Source": "main",
+            "Updated": "2026-01-02T07:39:57.146171+01:00"
         },
         {
             "Name": "neovim",
+            "Version": "0.11.6",
             "Info": "",
-            "Version": "0.10.0",
-            "Updated": "2024-05-17T07:17:25.3592213+02:00",
-            "Source": "main"
+            "Source": "main",
+            "Updated": "2026-01-27T07:16:28.2436793+01:00"
         },
         {
-            "Name": "process-explorer",
+            "Name": "neovim-qt",
+            "Version": "0.2.19",
             "Info": "",
-            "Version": "17.05",
-            "Updated": "2024-05-23T08:58:46.7836822+02:00",
-            "Source": "sysinternals"
+            "Source": "extras",
+            "Updated": "2025-01-23T07:28:15.2548524+01:00"
         },
         {
-            "Name": "resource-hacker",
+            "Name": "paint.net",
+            "Version": "5.1.11",
             "Info": "",
-            "Version": "5.2.7",
-            "Updated": "2024-05-23T08:32:24.1359293+02:00",
-            "Source": "extras"
+            "Source": "extras",
+            "Updated": "2025-11-10T07:42:18.2090279+01:00"
         },
         {
             "Name": "ripgrep",
+            "Version": "15.1.0",
             "Info": "",
-            "Version": "14.1.0",
-            "Updated": "2024-01-09T08:46:39.405847+01:00",
-            "Source": "main"
+            "Source": "main",
+            "Updated": "2025-10-23T08:04:36.5179706+02:00"
         },
         {
             "Name": "scene-builder",
+            "Version": "25.0.0",
             "Info": "",
-            "Version": "22.0.0",
-            "Updated": "2024-04-04T07:27:40.5397562+02:00",
-            "Source": "extras"
+            "Source": "extras",
+            "Updated": "2025-09-26T07:31:48.2781005+02:00"
         },
         {
             "Name": "screentogif",
+            "Version": "2.42.1",
             "Info": "",
-            "Version": "2.41",
-            "Updated": "2024-04-04T07:28:44.7518891+02:00",
-            "Source": "extras"
+            "Source": "extras",
+            "Updated": "2025-10-06T07:54:58.9853366+02:00"
         },
         {
-            "Name": "tcpview",
+            "Name": "uv",
+            "Version": "0.9.27",
             "Info": "",
-            "Version": "4.19",
-            "Updated": "2024-05-23T08:58:29.7907578+02:00",
-            "Source": "sysinternals"
+            "Source": "main",
+            "Updated": "2026-01-27T07:16:50.6030115+01:00"
         },
         {
             "Name": "visualvm",
+            "Version": "2.2",
             "Info": "",
-            "Version": "2.1.8",
-            "Updated": "2024-03-20T07:38:34.8565964+01:00",
-            "Source": "java"
+            "Source": "java",
+            "Updated": "2025-04-23T10:22:01.0639022+02:00"
+        },
+        {
+            "Name": "zig",
+            "Version": "0.15.2",
+            "Info": "",
+            "Source": "main",
+            "Updated": "2026-01-23T15:17:34.6000119+01:00"
         },
         {
             "Name": "zulufx-jdk",
+            "Version": "25.28.85",
             "Info": "Held package",
-            "Version": "22.30.13",
-            "Updated": "2024-05-22T09:43:19.9338515+02:00",
-            "Source": "java"
+            "Source": "java",
+            "Updated": "2025-09-22T15:22:25.9721535+02:00"
         }
     ],
     "buckets": [
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main.git",
-            "Updated": "2024-05-23T06:27:10+02:00",
-            "Manifests": 1325
+            "Updated": "2026-01-29T05:50:54+01:00",
+            "Manifests": 1422
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2024-05-23T06:29:50+02:00",
-            "Manifests": 2024
+            "Updated": "2026-01-29T05:51:14+01:00",
+            "Manifests": 2257
         },
         {
             "Name": "sysinternals",
             "Source": "https://github.com/niheaven/scoop-sysinternals",
-            "Updated": "2024-02-21T11:02:04+01:00",
+            "Updated": "2025-12-17T03:21:17+01:00",
             "Manifests": 75
         },
         {
             "Name": "java",
             "Source": "https://github.com/ScoopInstaller/Java",
-            "Updated": "2024-05-22T17:29:41+02:00",
-            "Manifests": 280
+            "Updated": "2026-01-28T21:33:03+01:00",
+            "Manifests": 324
         }
     ]
 }

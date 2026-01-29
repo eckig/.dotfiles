@@ -108,10 +108,3 @@ if vim.fn.has("gui_running") == 1 then
   vim.o.guifont = { "BerkeleyMono Nerd Font:h10" }
 end
 
--- LSP
-vim.lsp.enable(
-{
-  "yamlls",
-  "lua_ls"
-})
-
