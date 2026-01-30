@@ -1,18 +1,22 @@
-return {
+return
+{
   cmd = { 'yaml-language-server', '--stdio' },
   filetypes = { 'yaml', 'yml', 'yaml.docker-compose', 'yaml.gitlab', 'yaml.helm-values' },
   root_markers = { '.git' },
-  settings = {
+  settings =
+  {
     -- https://github.com/redhat-developer/vscode-redhat-telemetry#how-to-disable-telemetry-reporting
     redhat = { telemetry = { enabled = false } },
-    -- formatting disabled by default in yaml-language-server; enable it
-    yaml = {
+    yaml =
+    {
       format = { enable = true },
       hover = true,
       completion = true,
       validate = true,
-      schemas = {
-        kubernetes = {
+      schemas =
+      {
+        kubernetes =
+        {
           "*.yml",
           "*.yaml",
         },
