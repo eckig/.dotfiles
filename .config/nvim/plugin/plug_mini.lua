@@ -52,6 +52,15 @@ later(function()
   })
 end)
 
+-- Files
+require('mini.files').setup(
+{
+  mappings =
+  {
+    go_in       = '<CR>',
+  },
+})
+
 -- Highlight patterns
 later(function()
   local hipatterns = require('mini.hipatterns')

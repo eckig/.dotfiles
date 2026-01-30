@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" },
 -- replace umlauts in properties
 vim.api.nvim_create_autocmd({ "BufWritePre" },
 {
-  pattern = { "*.properties" },
+  pattern = { "messages*.properties" },
   callback = function(event)
     vim.cmd(":set noignorecase")
     vim.cmd(":%s/ä/\\\\u00E4/ge")

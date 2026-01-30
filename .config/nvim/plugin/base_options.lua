@@ -105,6 +105,6 @@ vim.o.complete    = '.,w,b,kspell'                  -- Use less sources
 vim.o.completeopt = 'menuone,noselect,fuzzy,nosort' -- Use custom behavior
 
 if vim.fn.has("gui_running") == 1 then
-  vim.o.guifont = { "BerkeleyMono Nerd Font:h10" }
+  vim.o.guifont = "BerkeleyMono Nerd Font:h10"
 end
 
