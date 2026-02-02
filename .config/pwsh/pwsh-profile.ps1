@@ -21,6 +21,8 @@ function ly
 {
   lazygit --git-dir=$HOME\.dotfiles\ --work-tree=$HOME
 }
+
+# jobs
 function jobs
 {
   Get-Job
@@ -32,6 +34,12 @@ function fg
   {
     receive-job -Job $j -wait
   }
+}
+
+# Visual Studio Vars
+function vcvars
+{
+  & "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 }
 
 # scoop update and cleanup

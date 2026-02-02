@@ -1,12 +1,15 @@
 -- Clipboard for WSL
 if vim.fn.has("wsl") == 1 then
-  vim.g.clipboard = {
+  vim.g.clipboard =
+  {
     name = "WslClipboard",
-    copy = {
+    copy =
+    {
       ["+"] = "clip.exe",
       ["*"] = "clip.exe",
     },
-    paste = {
+    paste =
+    {
       ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
       ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
     },
@@ -35,6 +38,7 @@ vim.o.clipboard   = "unnamedplus"  -- Sync System Clipboard
 vim.o.title       = true           -- Title in Terminal Window
 vim.o.titlestring = [[%t – %{fnamemodify(getcwd(), ':t')}]]
 vim.o.spelllang   = "en"           -- Language
+vim.o.confirm     = true           -- Save unsaved changes
 vim.cmd("language en_US")
 
 vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)

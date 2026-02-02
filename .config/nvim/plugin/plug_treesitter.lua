@@ -1,4 +1,24 @@
-local add, now = MiniDeps.add, MiniDeps.now
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+
+-- Install "Buildtools für Visual Studio"
+-- "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+
+local languages =
+{
+  'c',
+  'diff',
+  'html',
+  'java',
+  'javascript',
+  'json',
+  'lua',
+  'markdown',
+  'regex',
+  'toml',
+  'vim',
+  'xml',
+  'yaml',
+}
 
 now(function()
   add(
@@ -6,30 +26,6 @@ now(function()
     source = 'nvim-treesitter/nvim-treesitter',
     hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
   })
-
-  local languages =
-  {
-    'bash',
-    'c',
-    'diff',
-    'html',
-    'java',
-    'javascript',
-    'json',
-    'lua',
-    'luadoc',
-    'luap',
-    'markdown',
-    'markdown_inline',
-    'query',
-    'regex',
-    'toml',
-    'vim',
-    'vimdoc',
-    'xml',
-    'yaml',
-  }
-  require('nvim-treesitter').install(languages)
 
   -- Enable tree-sitter after opening a file for a target language
   local filetypes = {}
@@ -44,4 +40,8 @@ now(function()
     vim.wo[0][0].foldmethod = 'expr'
   end
   _Z.new_autocmd('FileType', filetypes, ts_start, 'Start tree-sitter')
+end)
+
+later(function()
+  require('nvim-treesitter').install(languages)
 end)
