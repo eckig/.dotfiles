@@ -39,7 +39,6 @@ vim.o.title       = true           -- Title in Terminal Window
 vim.o.titlestring = [[%t – %{fnamemodify(getcwd(), ':t')}]]
 vim.o.spelllang   = "en"           -- Language
 vim.o.confirm     = true           -- Save unsaved changes
-vim.cmd("language en_US")
 
 vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
 
