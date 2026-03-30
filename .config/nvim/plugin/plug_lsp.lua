@@ -1,7 +1,8 @@
-local add, later = MiniDeps.add, MiniDeps.later
+local add = vim.pack.add
+local now_if_args, later = Config.now_if_args, Config.later
 
-later(function()
-  add('mason-org/mason.nvim')
+now_if_args(function()
+  add({ 'https://github.com/mason-org/mason.nvim' })
   require('mason').setup()
 
   vim.lsp.enable(

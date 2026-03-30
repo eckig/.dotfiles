@@ -32,4 +32,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" },
 -- Don't auto-wrap comments and don't insert comment leader after hitting 'o'.
 -- Do on `FileType` to always override these changes from filetype plugins.
 local f = function() vim.cmd('setlocal formatoptions-=c formatoptions-=o') end
-_Z.new_autocmd({ 'BufEnter', 'FileType' }, nil, f, "Proper 'formatoptions'")
+Config.new_autocmd({ 'BufEnter', 'FileType' }, nil, f, "Proper 'formatoptions'")

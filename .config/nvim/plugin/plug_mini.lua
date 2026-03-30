@@ -1,4 +1,4 @@
-local now, later = MiniDeps.now, MiniDeps.later
+local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 
 -- Icons
 now(function()
@@ -76,7 +76,7 @@ later(function()
 end)
 
 -- Completion and signature help
-later(function()
+now_if_args(function()
   -- Don't show 'Text' suggestions (usually noisy) and show snippets last.
   local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
   local process_items = function(items, base)
@@ -93,14 +93,14 @@ later(function()
   local on_attach = function(ev)
     vim.bo[ev.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
   end
-  _Z.new_autocmd('LspAttach', nil, on_attach, "Set 'omnifunc'")
+  Config.new_autocmd('LspAttach', nil, on_attach, "Set 'omnifunc'")
 
   vim.lsp.config('*', { capabilities = MiniCompletion.get_lsp_capabilities() })
 end)
 
 -- Align (properties file by '=')
 later(function()
-  local var align = require("mini.align")
+  local align = require("mini.align")
   align.setup(
   {
     options =

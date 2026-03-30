@@ -1,20 +1,31 @@
--- Bootstrap 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
-local mini_path = vim.fn.stdpath('data') .. '/site/pack/deps/start/mini.nvim'
-if not vim.loop.fs_stat(mini_path) then
-  vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local origin = 'https://github.com/nvim-mini/mini.nvim'
-  local clone_cmd = { 'git', 'clone', '--filter=blob:none', origin, mini_path }
-  vim.fn.system(clone_cmd)
-  vim.cmd('packadd mini.nvim | helptags ALL')
-  vim.cmd('echo "Installed `mini.nvim`" | redraw')
-end
+-- Credits to MiniMax (https://github.com/nvim-mini/MiniMax/)
+-- Define config table to be able to pass data between scripts
+-- It is a global variable which can be use both as `_G.Config` and `Config`
+_G.Config = {}
+vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 
-require('mini.deps').setup()
+-- Loading helpers used to organize config into fail-safe parts.
+local misc = require('mini.misc')
+Config.now = function(f) misc.safely('now', f) end
+Config.later = function(f) misc.safely('later', f) end
+Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
+Config.on_event = function(ev, f) misc.safely('event:' .. ev, f) end
+Config.on_filetype = function(ft, f) misc.safely('filetype:' .. ft, f) end
 
-_Z = {}
 -- Define custom autocommand group and helper to create an autocommand.
-local gr = vim.api.nvim_create_augroup('z-config', {})
-_Z.new_autocmd = function(event, pattern, callback, desc)
+local gr = vim.api.nvim_create_augroup('custom-config', {})
+Config.new_autocmd = function(event, pattern, callback, desc)
   local opts = { group = gr, pattern = pattern, callback = callback, desc = desc }
   vim.api.nvim_create_autocmd(event, opts)
+end
+
+-- Define custom `vim.pack.add()` hook helper. See `:h vim.pack-events`.
+Config.on_packchanged = function(plugin_name, kinds, callback, desc)
+  local f = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if not (name == plugin_name and vim.tbl_contains(kinds, kind)) then return end
+    if not ev.data.active then vim.cmd.packadd(plugin_name) end
+    callback()
+  end
+  Config.new_autocmd('PackChanged', '*', f, desc)
 end
