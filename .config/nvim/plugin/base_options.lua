@@ -111,3 +111,20 @@ if vim.fn.has("gui_running") == 1 then
   vim.o.guifont = "BerkeleyMono Nerd Font:h10"
 end
 
+-- Neovim has built-in support for showing diagnostic messages.
+local diagnostic_opts = {
+  -- Show signs on top of any other sign, but only for warnings and errors
+  signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
+
+  -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
+  underline = { severity = { min = 'HINT', max = 'ERROR' } },
+
+  -- Show more details immediately for errors on the current line
+  virtual_lines = false,
+  virtual_text = {
+    current_line = true,
+    severity = { min = 'ERROR', max = 'ERROR' },
+  },
+}
+-- Use `later()` to avoid sourcing `vim.diagnostic` on startup
+Config.later(function() vim.diagnostic.config(diagnostic_opts) end)

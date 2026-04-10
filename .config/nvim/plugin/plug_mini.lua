@@ -46,13 +46,15 @@ later(function()
 end)
 
 -- Files
-require('mini.files').setup(
-{
-  mappings =
+now_if_args(function()
+  require('mini.files').setup(
   {
-    go_in_plus = '<CR>',
-  },
-})
+    mappings =
+    {
+      go_in_plus = '<CR>',
+    },
+  })
+end)
 
 -- Highlight patterns
 later(function()

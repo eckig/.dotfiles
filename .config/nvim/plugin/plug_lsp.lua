@@ -10,16 +10,4 @@ now_if_args(function()
     "yamlls",
     "lua_ls"
   })
-
-  vim.diagnostic.config(
-  {
-    signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
-    underline = { severity = { min = 'HINT', max = 'ERROR' } },
-    virtual_lines = false,
-    virtual_text =
-    {
-      current_line = true,
-      severity = { min = 'ERROR', max = 'ERROR' },
-    },
-  })
 end)
