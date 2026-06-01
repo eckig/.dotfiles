@@ -32,7 +32,7 @@ map("n", "ge", function() vim.diagnostic.jump( {count=1,   float=true}) end)
 map("n", "gE", function() vim.diagnostic.jump( {count=-1,  float=true}) end)
 
 -- Files
-map("n", "<leader>fd", '<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>', { desc = "Oil" })
+map("n", "<leader>fd", '<Cmd>Oil<CR>', { desc = "Oil" })
 
 vim.api.nvim_create_user_command("Cppath", function()
   local path = vim.fn.expand("%:p")
