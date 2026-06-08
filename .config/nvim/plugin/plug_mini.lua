@@ -45,17 +45,6 @@ later(function()
   })
 end)
 
--- Files
-now_if_args(function()
-  require('mini.files').setup(
-  {
-    mappings =
-    {
-      go_in_plus = '<CR>',
-    },
-  })
-end)
-
 -- Highlight patterns
 later(function()
   local hipatterns = require('mini.hipatterns')
@@ -125,6 +114,20 @@ later(function()
   MiniKeymap.map_multistep('i', '<Tab>', { 'pmenu_next' })
   MiniKeymap.map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
   MiniKeymap.map_multistep('i', '<CR>', { 'pmenu_accept' })
+end)
+
+-- Miscellaneous
+now_if_args(function()
+  require('mini.misc').setup()
+
+  -- Change current working directory based on the current file path.
+  MiniMisc.setup_auto_root()
+
+  -- Restore latest cursor position on file open
+  MiniMisc.setup_restore_cursor()
+
+  -- Synchronize terminal emulator background
+  MiniMisc.setup_termbg_sync()
 end)
 
 -- Start screen
