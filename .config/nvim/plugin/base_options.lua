@@ -107,8 +107,13 @@ vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 vim.o.complete    = '.,w,b,kspell'                  -- Use less sources
 vim.o.completeopt = 'menuone,noselect,fuzzy,nosort' -- Use custom behavior
 
-if vim.fn.has("gui_running") == 1 then
-  vim.o.guifont = "BerkeleyMono Nerd Font:h10"
+if vim.g.neovide then
+  vim.o.guifont = "BerkeleyMono Nerd Font:h12"
+  vim.g.neovide_window_blurred = true
+  vim.g.neovide_position_animation_length = 0
+  vim.g.neovide_cursor_animation_length = 0.00
+  vim.g.neovide_cursor_trail_size = 0
+  vim.g.neovide_theme = 'auto'
 end
 
 -- Neovim has built-in support for showing diagnostic messages.

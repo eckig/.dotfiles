@@ -4,3 +4,5 @@ keybind = ctrl+shift+l=next_tab
 keybind = ctrl+shift+h=previous_tab
 keybind = ctrl+shift+t=new_tab
 keybind = ctrl+shift+w=close_tab
+
+theme = dark:Nvim Dark,light:Nvim Light

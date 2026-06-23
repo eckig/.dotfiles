@@ -1,9 +1,6 @@
 local add = vim.pack.add
 local now_if_args, later = Config.now_if_args, Config.later
 
--- Install "Buildtools für Visual Studio"
--- "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
-
 now_if_args(function()
   -- Define hook to update tree-sitter parsers after plugin is updated
   local ts_update = function() vim.cmd('TSUpdate') end
