@@ -125,9 +125,6 @@ now_if_args(function()
 
   -- Restore latest cursor position on file open
   MiniMisc.setup_restore_cursor()
-
-  -- Synchronize terminal emulator background
-  MiniMisc.setup_termbg_sync()
 end)
 
 -- Start screen
