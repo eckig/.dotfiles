@@ -7,7 +7,8 @@ gui:
   showListFooter: false
   showCommandLog: false
   showRandomTip: false
-  commitHashLength: 3
+  commitHashLength: 0
+  showBottomLine: false
   showDivergenceFromBaseBranch: arrowAndNumber # or 'onlyArrow'
   expandFocusedSidePanel: true
   expandedSidePanelWeight: 3

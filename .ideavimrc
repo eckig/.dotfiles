@@ -6,6 +6,7 @@ set ideajoin
 set visualbell
 
 set incsearch              " Highlight while searching with / or ?.
+set inccommand=nosplit     " preview replacement
 set hlsearch               " Keep matches highlighted.
 set smartcase
 set ignorecase
@@ -19,6 +20,7 @@ set showcmd
 set scrolloff=7          " Lines of context
 set sidescrolloff=8      " Columns of context
 
+set surround
 set highlightedyank
 set timeoutlen=500         " increase the timeoutlen (default: 1000)
 
