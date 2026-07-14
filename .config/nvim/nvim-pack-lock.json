@@ -9,8 +9,12 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "d74190c1528aaf12ba5f3a29d03524c6b81e18b3",
+      "rev": "fc5c7167adc51d5f39219e86739d5c193b777f44",
       "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "modus-themes.nvim": {
+      "rev": "17a64464c27c1be605adca13dbe48f2f402fe107",
+      "src": "https://github.com/miikanissi/modus-themes.nvim"
     },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",

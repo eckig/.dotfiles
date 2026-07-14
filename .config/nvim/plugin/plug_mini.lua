@@ -34,7 +34,11 @@ later(function() require('mini.trailspace').setup() end)
 later(function() require('mini.visits').setup() end)
 
 -- Cursorword
-later(function() require('mini.cursorword').setup() end)
+later(function()
+  require('mini.cursorword').setup()
+  vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', {underline=true})
+  vim.api.nvim_set_hl(0, 'MiniCursorword',        {underline=true})
+end)
 
 -- Indent scope
 later(function()
