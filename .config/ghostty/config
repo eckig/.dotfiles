@@ -1,4 +1,6 @@
 font-family = "BerkeleyMono Nerd Font"
+window-title-font-family="BerkeleyMono Nerd Font"
+adjust-cell-height = 10%
 
 keybind = ctrl+shift+l=next_tab
 keybind = ctrl+shift+h=previous_tab

@@ -16,6 +16,8 @@ gui:
 os:
   edit: 'nvim {{filename}}'
   editAtLine: 'nvim +{{line}} -- {{filename}}'
+  shell: "zsh"
+  shellArg: "-c"
 git:
   diffContextSize: 2
   autoForwardBranches: none
