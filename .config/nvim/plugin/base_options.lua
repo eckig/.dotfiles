@@ -95,6 +95,7 @@ vim.o.smartindent   = true    -- Make indenting smart
 vim.o.spelloptions  = 'camel' -- Treat camelCase word parts as separate words
 vim.o.tabstop       = 2       -- Show tab as this number of spaces
 vim.o.virtualedit   = 'block' -- Allow going past end of line in blockwise mode
+vim.o.jumpoptions   = 'stack'
 
 vim.o.iskeyword = '@,48-57,_,192-255,-' -- Treat dash as `word` textobject part
 
