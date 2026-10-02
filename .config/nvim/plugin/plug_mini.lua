@@ -40,6 +40,9 @@ later(function()
   vim.api.nvim_set_hl(0, 'MiniCursorword',        {underline=true})
 end)
 
+-- Statuscolumn
+now(function() require('mini.statuscolumn').setup() end)
+
 -- Indent scope
 later(function()
   local var indentscope = require('mini.indentscope')

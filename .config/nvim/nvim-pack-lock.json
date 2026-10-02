@@ -1,7 +1,7 @@
 {
   "plugins": {
     "auto-dark-mode.nvim": {
-      "rev": "54058b4fe414bd64bd2904a6f8a63f1f14e3d8df",
+      "rev": "2b16a24c202892e61fca7df4d2d7c4c872a44165",
       "src": "https://github.com/f-person/auto-dark-mode.nvim"
     },
     "mason.nvim": {
@@ -9,15 +9,15 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "a311ed247d527db9592bb434356badc705363746",
+      "rev": "561751e839b99a4baca36b9d963166b66d2536a6",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "modus-themes.nvim": {
-      "rev": "56233f0986ef6c8d0eab97e924e87144e584d970",
+      "rev": "15ffb5ab6a12f72ee1e8393fe5810d5317da2d3e",
       "src": "https://github.com/miikanissi/modus-themes.nvim"
     },
     "nvim-treesitter": {
-      "rev": "857651fce37eba032ebe28f3a206283cdc65c45a",
+      "rev": "910fdf6f49e9dee7e7257c7d11a76b040fdfb9de",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "oil.nvim": {
