@@ -19,6 +19,7 @@ now_if_args(function()
     'lua',
     'markdown',
     'regex',
+    'rust',
     'toml',
     'vim',
     'xml',

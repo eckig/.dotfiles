@@ -1,12 +1,16 @@
 font-family = "BerkeleyMono Nerd Font"
 window-title-font-family="BerkeleyMono Nerd Font"
-adjust-cell-height = 10%
+window-padding-y = 0
+background-blur = 20
+background-opacity = 0.9
+font-size = 16
 
 keybind = ctrl+shift+l=next_tab
 keybind = ctrl+shift+h=previous_tab
 keybind = ctrl+shift+t=new_tab
 keybind = ctrl+shift+w=close_tab
 
+auto-update = off
 
 theme = dark:Modus Vivendi,light:Modus Operandi
 macos-titlebar-style = tabs
